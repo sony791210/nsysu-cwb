@@ -1,0 +1,15 @@
+/www/msysu/node_modules
+/www/msysu/public/hot
+/www/msysu/public/storage
+/www/msysu/public/css
+/www/msysu/public/js
+/www/msysu/public/mix-manifest.json
+/www/msysu/public/fonts
+/www/msysu/storage/*.key
+/www/msysu/storage/order
+/www/msysu/vendor
+/www/msysu/.idea
+/www/msysu/.vscode
+/www/msysu/.vagrant
+/www/msysu/Homestead.json
+/www/msysu/Homestead.yaml
