@@ -20,17 +20,21 @@
             line-height: $navbar-height;
             cursor: pointer;
             transition: transform .2s;
+            position: relative;
             &:hover {
                 color: $gold;
                 transform: scale(1.1);
+            }
+            &:hover > .link-content  {
+                display: block;
             }
             .img{
                 width: 150px;
             }
             .link-content {
                 background-color: hsla(0,0%,100%,.9); 
-                left: 120%; 
-                transform: translateX(-120%); 
+                // left: 50%; 
+                // transform: translateX(-50%); 
                 position: absolute; 
                 top: 69px; 
                 white-space: nowrap; 
@@ -39,7 +43,9 @@
                 color:$black;
                 list-style: none;
                 padding: 10px;
-                // display: none;
+                display: none;
+                width: 100%;
+
             }
         }
     }

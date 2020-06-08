@@ -6,8 +6,8 @@
         <a href="/" class="tab-group-item">
           <img class="img" src="https://ttpass.tw/dist/client/img/bc7f287.png" alt="132(123)" >
         </a>
-        <router-link :to="'/' + item.name" v-for="item in tabs" :key="item.name">
-          <li class="tab-group-item">
+        <router-link :to="'/' + item.name" v-for="item in tabs" :key="item.name" class="tab-group-item">
+     
             {{ item.label }}
             <ul class="link-content">
               <li >123</li>
@@ -15,7 +15,7 @@
               <li >1342523</li>
               <li >1325423</li>
             </ul>
-          </li>
+         
         </router-link>
       </ul>
       <i class="fas fa-bars navbar-icon" @click="onShowCollapse"></i>
