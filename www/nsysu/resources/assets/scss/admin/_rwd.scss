@@ -1,0 +1,176 @@
+@media (max-width: $min-width) { //1024px
+    .dash-board {
+        .board-box {
+            width: 45%;
+        }
+    }
+}
+
+@media (max-width: $min-screen-mobile) { //480px
+    .login-page {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+    .card-login {
+      margin-top: 0;
+      min-height: 100vh;
+    }
+}
+
+@media (max-width: 425px) {
+    .dash-board {
+        padding: 10px;
+        margin-bottom: 50px;
+        .board-box {
+            width: 100%;
+            margin: 5px 0;
+            .box-top {
+                font-size: $font-size-base + 0.8rem;
+            }
+            .box-bottom {
+                font-size: $font-size-base + 0.4rem;
+            }
+        }
+    }
+    .bar {
+        .bar-left {
+            width: 100%;
+            .bar-title {
+                text-align: center;
+                padding-left: 0;
+            }
+        }
+        .bar-right {
+            display: block;
+            width: 100%;
+            padding: 0 10px;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+    }
+    .search-box {
+        .el-input {
+            width: 100% !important;
+        }
+    }
+    .float-right {
+        margin: 10px 0;
+    }
+    .el-collapse-item__wrap {
+        width: 100% !important;
+    }
+    .but-group {
+        margin: 50px 0 !important;
+    }
+    .el-form-item {
+        margin: 0 !important;
+    }
+    .container-fluid {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .el-form-item__label {
+        width: 100% !important;
+        text-align: left !important;
+    }
+    .el-form-item__content {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        position: inherit !important;
+    }
+    .el-select {
+        width: 100% !important;
+        margin-bottom: 5px;
+    }
+    .el-input__inner {
+        width: 100% !important;
+    }
+    .address {
+        .zipcode {
+            width: 100% !important;
+            margin-top: 5px;
+        }
+        .county {
+            width: 100% !important;
+            margin-top: 5px;
+        }
+        .district {
+            width: 100% !important;
+            margin-top: 5px;
+        }
+    }
+    .multiselect__select {
+        position: relative !important;
+        transition: none !important;
+        text-align: right !important;
+        width: 100% !important;
+    }
+    .multiselect__select:before {
+        display: none !important;
+    }
+    .multiselect--active .multiselect__select {
+        transform: none !important;
+    }
+    .table-row {
+        display: block;
+        border-bottom: 1px solid #b8bcc3;
+        padding: 10px 0;
+    }
+    .table-col {
+        display: inline-block;
+        width: 100% !important;
+        padding: 5px 0 !important;
+    }
+    .el-message-box {
+        width: 100% !important;
+    }
+    .el-message {
+        width: 100% !important;
+        min-width: inherit !important;
+    }
+    .el-notification {
+        width: 100% !important;
+    }
+    .el-notification.right {
+        right: 0px !important;
+    }
+    .el-picker-panel {
+        left: 0 !important;
+    }
+    .el-date-picker {
+        width: 100% !important;
+    }
+    .el-date-range-picker {
+        width: 100% !important;
+        .el-picker-panel__body {
+            min-width: inherit !important;
+        }
+    }
+    .el-date-range-picker__time-header {
+        display: block !important;
+        text-align: center;
+        .el-date-range-picker__editors-wrap {
+            display: inline-block !important;
+        }
+        .el-icon-arrow-right {
+            display: inline-block !important;
+        }
+    }
+    .el-date-range-picker__header {
+        height: inherit !important;
+        div {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+    }
+    .el-time-range-picker {
+        width: 100% !important;
+    }
+    .el-input-number {
+        width: 100% !important;
+    }
+    .el-input {
+        width: 100% !important;
+    }
+}

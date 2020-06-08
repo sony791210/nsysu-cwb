@@ -1,0 +1,237 @@
+//public
+html, body {
+  font-family: $font-family-s-tw;
+}
+
+.row-box {
+    float: left;
+    width: 100%;
+}
+
+.text-mini {
+    font-size: 50%;
+}
+
+.bar {
+    background-color: #e9ecef;
+    margin-bottom: 20px;
+    width: 100%;
+    .title {
+        line-height: 2;
+        font-weight: 800;
+        text-align: left;
+        padding-left: 20px;
+        margin-bottom: 0;
+    }
+
+    .bar-left {
+        display: inline-block;
+        width: 59%;
+        font-weight: 800;
+        h2 {
+            margin-bottom: 0;
+        }
+        .bar-title {
+            line-height: 2;
+            font-weight: 800;
+            text-align: left;
+            padding-left: 20px;
+            margin-bottom: 0;
+            color: #002a54;
+        }
+    }
+
+    .bar-right {
+        display: inline-block;
+        width: 39%;
+        text-align: right;
+        vertical-align: middle;
+        button {
+            margin-bottom: 7px;
+        }
+        span {
+            margin: 0 10px;
+        }
+    }
+}
+
+// card
+.card {
+    .card-header {
+        position: relative;
+        width: 100%;
+        background-color: $white;
+        .collapse-btn {
+            position: absolute;
+            height: 100%;
+            width: 40px;
+            text-align: center;
+            top: 0;
+            right: 0;
+
+            i {
+                font-size: 1.2rem;
+                padding-top: 14px;
+            }
+        }
+    }
+    .el-collapse-item__arrow {
+        position: absolute;
+        right: 5px;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.page {
+    text-align: center;
+    margin: 50px 0;
+}
+
+.searchResult {
+    margin: 15px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.red {
+    color: #a30000;
+    font-weight: 700;
+}
+
+.input_shortnumber {
+    width: 50px !important;
+    margin: 0 10px !important;
+    font-size: 1rem !important;
+
+    .el-input__inner {
+        color: #94090D !important;
+        font-weight: 700 !important;
+    }
+}
+
+.input_longnumber {
+    width: 150px !important;
+}
+
+
+.tab-card {
+    margin-bottom: 10px;
+}
+
+.tab-title {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.address>.el-form-item__content>div {
+    display: inline-flex !important;
+    input[name=zipcode] {
+        pointer-events: none;
+    }
+}
+
+.img-overrun {
+  display: none !important;
+}
+
+.hr {
+    @extend .row-box;
+    height: 1px;
+    background-color: $light-gray;
+}
+
+.or {
+    @extend .hr;
+    position: relative;
+    margin: 10px 0;
+
+    &:before {
+        position: absolute;
+        content: "or";
+        top: -10px;
+        left: calc(50% - 21px);
+        padding: 0 15px;
+        color: $gray;
+        background-color: $white;
+    }
+}
+
+[v-cloak] {
+    display: none;
+}
+  
+.texteditor {
+    margin-top: 20px;
+}
+  
+.msg-dialog {
+    min-width: 40vw;
+}  
+
+.page-form {
+    margin: 0 30px;
+}
+
+@each $key,
+$color in $color-collection {
+    .color-#{$key} {
+        color: $color !important;
+    }
+    .bg-color-#{$key} {
+        background: $color !important;
+    }
+    .hover-bg-#{$key}:hover {
+        background: $color !important;
+    }
+    .color-box-#{$key} {
+        @extend .row-box;
+        color: $white;
+        background: $color !important;
+    }
+    .tag-#{$key} {
+        color: $color;
+        background: $white;
+    }
+    .tag-border-#{$key} {
+        padding: 2px 10px;
+        color: $color !important;
+        background: $white;
+        border: 1px solid $color;
+        border-radius: 4px;
+    }
+    .tag-bg-#{$key} {
+        color: $white;
+        background: $color;
+    }
+    .border-#{$key} {
+      border: 1px solid $color;
+    }
+}
+
+@for $i from 1 through 100 {
+    .font-size-#{$i + 10} {
+        @include font-size($i + 10);
+    }
+    .margin-#{$i} {
+      margin: $i + 0px;
+    }
+    .margin-top-#{$i} {
+      margin-top: $i + 0px;
+    }
+    .margin-bottom-#{$i} {
+      margin-bottom: $i + 0px;
+    }
+    .margin-left-#{$i} {
+      margin-left: $i + 0px;
+    }
+    .margin-right-#{$i} {
+      margin-right: $i + 0px;
+    }
+}

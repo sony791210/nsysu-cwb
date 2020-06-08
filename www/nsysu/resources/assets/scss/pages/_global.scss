@@ -1,0 +1,92 @@
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff2) format('woff2'), url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Regular.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 300;
+  src: url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff2) format('woff2'), url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.woff) format('woff'),
+    url(//fonts.gstatic.com/ea/notosanstc/v1/NotoSansTC-Light.otf) format('opentype');
+}
+
+html,
+body {
+  font-family: 'Noto Sans TC', 'serif';
+  font-weight: 300;
+}
+
+$navbar-height: 80px;
+$mobile-navbar-height: 60px;
+
+.home-container {
+  margin-top: $navbar-height;
+  min-height: calc(100vh - 207px - 80px);
+  background-color: #edece8;
+  & > .title {
+    width: 411px;
+    height: 60px;
+    color: $white;
+    line-height: 60px;
+    @include font-size(32);
+    position: relative;
+    margin: 0 auto 50px auto;
+    text-align: center;
+    background-image: url('/../images/title_bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+.page-container {
+  margin-top: $navbar-height;
+  min-height: calc(100vh - 207px - 80px);
+  background-color: #edece8;
+  padding: 80px 0;
+  & > .title {
+    width: 411px;
+    height: 60px;
+    color: $white;
+    line-height: 60px;
+    @include font-size(32);
+    position: relative;
+    margin: 0 auto 50px auto;
+    text-align: center;
+    background-image: url('/../images/title_bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+a {
+  color: inherit;
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 804px) {
+  .page-container,
+  .home-container {
+    margin-top: $mobile-navbar-height;
+    min-height: calc(100vh - 350px - 60px);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .page-container,
+  .home-container {
+    padding: 30px 0;
+    & > .title {
+      width: 90%;
+      @include font-size(20);
+    }
+  }
+}

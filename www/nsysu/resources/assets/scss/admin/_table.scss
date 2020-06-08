@@ -1,0 +1,68 @@
+.table {
+    width: 100%;
+    text-align: center;
+    border: 1px solid #bbbbbd;
+}
+
+.table-row {
+    width: 100%;
+    display: table;
+}
+
+.table-header-col {
+    border: 1px solid #bbbbbd;
+    display: table-cell;
+    vertical-align: middle;
+    width: 10%;
+    padding: 12px 0;
+    font-weight: 600;
+    background-color: #faebd7
+}
+
+.table-col {
+    border: 1px solid #bbbbbd;
+    display: table-cell;
+    vertical-align: middle;
+    width: 10%;
+    padding: 12px 0;
+}
+
+.table-list {
+    font-family: "Microsoft JhengHei";
+
+    .icon-button {
+        margin: 2px !important;
+    }
+
+    .el-table__expand-icon:after {
+        content: '展開\21E9';
+        color: #ffffff;
+        font-family: "Microsoft JhengHei";
+        padding: 5px 20px;
+        border-radius: 15px;
+        background-color: #f56c6c;
+    }
+
+    .el-table .cell {
+        overflow: inherit;
+    }
+
+    .el-table__expand-icon>i {
+        display: none !important;
+    }
+
+    .el-table__expand-icon--expanded {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    .el-table__expand-icon--expanded:after {
+        content: '收合\21E7';
+    }
+
+    .pop-tip {
+        word-break: break-all;
+        width: 200px;
+        font-size: 0.9rem;
+    }
+}

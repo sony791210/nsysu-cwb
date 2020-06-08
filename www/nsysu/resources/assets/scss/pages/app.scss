@@ -1,0 +1,15 @@
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// font-awesome
+@import '~@fortawesome/fontawesome-free/css/all';
+
+@import '../variables.scss';
+@import '../mixin.scss';
+@import 'animation';
+@import 'global';
+@import './components/nav';
+@import './components/footer';
+@import './components/newscard';
+@import 'style';
+@import 'rwd';
