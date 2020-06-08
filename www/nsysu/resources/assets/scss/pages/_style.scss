@@ -3,7 +3,7 @@
   top: $mobile-navbar-height;
   width: 100%;
   height: calc(100vh - 60px);
-  background-color: #620c10;
+  background-image:$liner-green;
   z-index: 999;
   .list-group {
     .close {
@@ -19,6 +19,30 @@
       background-color: initial;
       text-align: center;
       color: $white;
+      &:hover {
+        color: $gold;
+        transform: scale(1.1);
+      }
+      &:hover > .link-content  {
+        display: block;
+      }
+      .link-content {
+        top: 69px; 
+        white-space: nowrap; 
+        text-align: center; 
+        cursor: pointer;
+        color:$black;
+        list-style: none;
+        padding: 10px;
+        display: none;
+        width: 100%;
+        .test{
+          &:hover {
+            color: $gold;
+            transform: scale(1.1);
+          }
+        }
+      }
     }
   }
 }

@@ -45,6 +45,12 @@
           <li class="close" @click="onCloseCollapse"><i class="fas fa-times"></i></li>
           <li class="list-group-item" v-for="item in tabs" :key="item.name" @click="onLink(item.name)">
             {{ item.label }}
+            <ul class="link-content">
+              <li class="test">123</li>
+              <li >234</li>
+              <li >1342523</li>
+              <li >1325423</li>
+            </ul>
           </li>
         </ul>
       </div>
