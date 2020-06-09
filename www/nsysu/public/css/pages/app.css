@@ -18131,6 +18131,37 @@ a:hover {
   padding: 0;
 }
 
+@media (min-width: 800px) {
+  .mapbody {
+    display: flex;
+  }
+
+  .mapbody .left {
+    width: 30%;
+    height: 50vh;
+  }
+
+  .mapbody .right {
+    width: 70%;
+  }
+}
+
+@media (max-width: 800px) {
+  .mapbody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mapbody .left {
+    width: 100vh;
+    height: 50vh;
+  }
+
+  .mapbody .right {
+    width: 60%;
+  }
+}
+
 @media (max-width: 1439.98px) {
   .home > .logo {
     left: 25vw;

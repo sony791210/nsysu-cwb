@@ -70,7 +70,11 @@ export default {
         {
           label: '氣象資料',
           name: 'about',
-          ulabel:[{label:'潮位資料',name:'tide'}]
+          ulabel:[
+                  {
+                    label:'潮位資料',
+                    name:'tide'
+                  }]
         },
         {
           label: '活動花絮',

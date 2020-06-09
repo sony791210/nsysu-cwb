@@ -7,6 +7,7 @@ import About from './components/About';
 import Activities from './components/Activities';
 import Service from './components/Service';
 import JoinUs from './components/JoinUs';
+import Tide from './components/Tide';
 import Traffic from './components/Traffic';
 import Faq from './components/Faq';
 import Contact from './components/Contact';
@@ -43,7 +44,7 @@ const router = new VueRouter({
         {
             path:'/about/tide',
             name: 'tide',
-            component: JoinUs
+            component: Tide
         },
         {
             path:'/activities',

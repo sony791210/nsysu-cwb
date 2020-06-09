@@ -630,3 +630,34 @@
   margin: 0;
   padding: 0;
 }
+
+
+
+
+@media (min-width: 800px) {
+  .mapbody{
+    display: flex;
+    .left{
+      width: 30%;
+      height: 50vh;
+    }
+    .right{
+      width: 70%;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .mapbody{
+    display: flex;
+    flex-direction: column;
+    .left{
+      width: 100vh;
+      height: 50vh;
+    }
+    .right{
+      width: 60%;
+    }
+  }
+
+}
