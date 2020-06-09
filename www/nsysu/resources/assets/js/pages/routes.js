@@ -43,7 +43,7 @@ const router = new VueRouter({
         {
             path:'/about/tide',
             name: 'tide',
-            component: Service
+            component: JoinUs
         },
         {
             path:'/activities',

@@ -11,7 +11,7 @@
             {{ item.label }}
 
             <ul  v-for="jtem in item.ulabel" :key="jtem.name" class="link-content">
-                  <a  :href="'/' + item.name+'/'+ jtem.name">
+                  <a  @click.prevent="onRedirect(item.name+'/'+ jtem.name)" >
                   {{ jtem.label }}
                   </a>
               </ul>
@@ -172,6 +172,10 @@ export default {
     },
     onLink(name) {
       this.onCloseCollapse()
+      this.$router.push('/' + name)
+    },
+    onRedirect(name) {
+      console.log(name)
       this.$router.push('/' + name)
     }
   }
