@@ -9,19 +9,22 @@
         <router-link :to="'/' + item.name" v-for="item in tabs" :key="item.name" class="tab-group-item">
      
             {{ item.label }}
-            <ul class="link-content">
-              <li >123</li>
-              <li >234</li>
-              <li >1342523</li>
-              <li >1325423</li>
-            </ul>
+
+            <ul  v-for="jtem in item.ulabel" :key="jtem.name" class="link-content">
+                  <a  :href="'/' + item.name+'/'+ jtem.name">
+                  {{ jtem.label }}
+                  </a>
+              </ul>
+            
          
         </router-link>
       </ul>
       <i class="fas fa-bars navbar-icon" @click="onShowCollapse"></i>
-      <h2 class="navbar-title">
-        NSYSU WEB
-      </h2>
+      <a href="/" class="navbar-title">
+        <h5  >
+          NSYSU WEB
+        </h5>
+      </a>
     </nav>
     <router-view></router-view>
     <footer class="footer block">
@@ -37,7 +40,9 @@
           <li class="social-icon line" @click.prevent="onSocialLink('line')"></li>
         </ul>
       </div>
-      <h2 class="copyright">NSYSU KANGOO 版權所有</h2>
+      
+      <h2  href="/" class="copyright">NSYSU KANGOO 版權所有</h2>
+      
     </footer>
     <transition name="slideDownUp">
       <div class="collapse show" v-if="showCollapse">
@@ -45,11 +50,8 @@
           <li class="close" @click="onCloseCollapse"><i class="fas fa-times"></i></li>
           <li class="list-group-item" v-for="item in tabs" :key="item.name" @click="onLink(item.name)">
             {{ item.label }}
-            <ul class="link-content">
-              <li class="test">123</li>
-              <li >234</li>
-              <li >1342523</li>
-              <li >1325423</li>
+            <ul class="link-content" v-for="jtem in item.ulabel">
+              <li class="test">{{ jtem.label }}</li>
             </ul>
           </li>
         </ul>
@@ -65,10 +67,10 @@ export default {
   data() {
     return {
       tabs: [
-
         {
-          label: '高雄阿蓮天聖宮',
-          name: 'about'
+          label: '氣象資料',
+          name: 'about',
+          ulabel:[{label:'潮位資料',name:'tide'}]
         },
         {
           label: '活動花絮',
@@ -110,15 +112,15 @@ export default {
     window.addEventListener('scroll', this.handleScroll, { capture: false, passive: true })
   },
   mounted() {
-    this.onChangeTabs(this.$route.name)
+    // this.onChangeTabs(this.$route.name)
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll, { capture: false, passive: true })
   },
   watch: {
-    $route(to, from) {
-      this.onChangeTabs(to.name)
-    }
+    // $route(to, from) {
+    //   this.onChangeTabs(to.name)
+    // }
   },
   methods: {
     handleScroll() {
