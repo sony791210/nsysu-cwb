@@ -31,6 +31,7 @@
     "dependencies": {
         "@ckeditor/ckeditor5-build-balloon": "^11.0.1",
         "@ckeditor/ckeditor5-build-classic": "^11.1.1",
+        "amcharts3": "^3.21.15",
         "dayjs": "^1.7.7",
         "leaflet": "^1.6.0",
         "libphonenumber-js": "^1.7.22",

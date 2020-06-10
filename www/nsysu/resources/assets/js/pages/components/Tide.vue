@@ -1,6 +1,5 @@
 <template>
   <div class="page-container joinus-page">
-    <h2 class="title">TEST</h2>
     <div class="mapbody">
       <div class="left">
         <l-map
@@ -37,7 +36,7 @@
       </div>
 
       <div class="right">
-        asdf
+        <div id="chartdiv" class="box"></div>
       </div>
 
     </div>
@@ -90,6 +89,32 @@ export default {
         this.$refs.location.mapObject.openPopup();
       });
     });
-  }
+  },
+  created() {
+    AmCharts.makeChart("chartdiv",
+      {
+        "export": {
+          "enabled": "true"
+        },
+        "type": "serial",
+        "categoryField": "type",
+        "chartCursor": {},
+        "graphs": [
+          {
+            "type": "column",
+            "title": "Pizza types",
+            "valueField": "sold",
+            "fillAlphas": 0.8
+          }
+        ],
+        "dataProvider": [
+          { "type": "Margherita", "sold": 120 },
+          { "type": "Funghi", "sold": 82 },
+          { "type": "Capricciosa", "sold": 78 },
+          { "type": "Quattro Stagioni", "sold": 71 }
+        ]
+      }
+    );
+  },
 }
 </script>

@@ -17,6 +17,13 @@ import VueYoutube from 'vue-youtube'
 import VueScrollTo from 'vue-scrollto'
 import './plungins/leaflet'
 
+//amcharts3
+import AmCharts from 'amcharts3'
+import AmSerial from 'amcharts3/amcharts/serial'
+import "amcharts3/amcharts/plugins/export/export.css"
+import "amcharts3/amcharts/plugins/export/export.min.js"
+Vue.use(AmCharts);
+Vue.use(AmSerial);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

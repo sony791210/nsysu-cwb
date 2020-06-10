@@ -11,4 +11,7 @@ Route::namespace('Api')->group(function () {
 });
 
 Route::namespace('Api\V1')->prefix('v1')->group(function () {
+    Route::prefix('test')->group(function () {
+        Route::post('/', 'SendEmailControllers@test');
+});
 });
