@@ -23,4 +23,6 @@ class SendEmailControllers extends Controller
         Mail::to($to)->send(new SendMailQuestion());
 
     }
+
+
 }

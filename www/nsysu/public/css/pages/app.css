@@ -18144,6 +18144,11 @@ a:hover {
   .mapbody .right {
     width: 70%;
   }
+
+  .mapbody .right .box {
+    height: 50vh;
+    width: 90%;
+  }
 }
 
 @media (max-width: 800px) {
@@ -18153,12 +18158,17 @@ a:hover {
   }
 
   .mapbody .left {
-    width: 100vh;
-    height: 50vh;
+    width: 100%;
+    height: 30vh;
   }
 
   .mapbody .right {
-    width: 60%;
+    width: 100%;
+  }
+
+  .mapbody .right .box {
+    height: 50vh;
+    width: 100%;
   }
 }
 
