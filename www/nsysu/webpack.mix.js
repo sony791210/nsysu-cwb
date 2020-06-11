@@ -1,5 +1,5 @@
 let mix = require('laravel-mix');
-
+const fs = require('fs')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,6 +12,7 @@ let mix = require('laravel-mix');
  */
 mix.copy('node_modules/ckeditor', 'public/js/ckeditor');
 mix.copy('resources/assets/js/admin/ckeditor_config.js', 'public/js/ckeditor/config.js');
+mix.copy('node_modules/amcharts3', 'public/js/amcharts');
 
 // 後台
 mix.js('resources/assets/js/admin/app.js', 'public/js/admin')
@@ -22,3 +23,5 @@ mix.js('resources/assets/js/admin/date_helper.js', 'public/js/date_helper.js').v
 //前台
 mix.js('resources/assets/js/pages/app.js', 'public/js/pages')
    .sass('resources/assets/scss/pages/app.scss', 'public/css/pages').version();
+
+mix.webpackConfig({ node: { fs: 'empty' ,child_process: 'empty'}})

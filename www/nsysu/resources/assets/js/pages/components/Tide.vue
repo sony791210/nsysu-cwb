@@ -36,13 +36,14 @@
       </div>
 
       <div class="right">
-        <div id="chartdiv" class="box"></div>
+        <!-- <div id="chartdiv" class="box"></div> -->
       </div>
 
     </div>
   </div>
 </template>
 <script>
+
 export default {
   data() {
     return {
@@ -89,13 +90,14 @@ export default {
         this.$refs.location.mapObject.openPopup();
       });
     });
-  },
-  created() {
     AmCharts.makeChart("chartdiv",
       {
         "export": {
-          "enabled": "true"
+          "enabled": true,
+          "libs": { "autoLoad": true},
+          
         },
+        
         "type": "serial",
         "categoryField": "type",
         "chartCursor": {},
@@ -115,6 +117,9 @@ export default {
         ]
       }
     );
+  },
+  created() {
+    
   },
 }
 </script>
