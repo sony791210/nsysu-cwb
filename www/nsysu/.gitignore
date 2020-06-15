@@ -1,0 +1,17 @@
+./www/nsysu/node_modules
+www/nsysu/node_modules
+./www/nsysu/public/hot
+./www/nsysu/public/storage
+./www/nsysu/public/css
+./www/nsysu/public/js
+./www/nsysu/public/mix-manifest.json
+./www/nsysu/public/fonts
+./www/nsysu/storage/*.key
+./www/nsysu/storage/order
+./www/nsysu/vendor
+./www/nsysu/.idea
+./www/nsysu/.vscode
+./www/nsysu/.vagrant
+./www/nsysu/Homestead.json
+./www/nsysu/Homestead.yaml
+
