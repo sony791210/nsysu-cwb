@@ -10,7 +10,9 @@
 import Vue from 'vue'
 import { LMap, LTileLayer, LMarker, LPopup,LIcon } from 'vue2-leaflet';
 
-
+import Vue2LeafletMarkerCluster from 'vue2-leaflet-markercluster';
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 // 載入 css
 import "leaflet/dist/leaflet.css";
@@ -21,7 +23,7 @@ Vue.component("l-tile-layer", LTileLayer);
 Vue.component("l-marker", LMarker);
 Vue.component("l-popup", LPopup);
 Vue.component("l-icon", LIcon);
-
+Vue.component('v-marker-cluster', Vue2LeafletMarkerCluster)
 
 // 設定預設 icon
 import { Icon } from "leaflet";

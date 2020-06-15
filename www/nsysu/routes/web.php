@@ -16,7 +16,7 @@ Route::namespace('Pages')->group(function () {
     Route::get('/news', 'NewsController@index')->name('news');
     Route::get('/news/{id}', 'NewsController@detail');
     Route::get('/about', 'AboutController@index')->name('about');
-    Route::get('/about/tide', 'ActivitiesController@index');
+    Route::get('/about/tide', 'AboutController@tideIndex');
     Route::get('/activities', 'ActivitiesController@index')->name('activities');
     Route::get('/service', 'ServiceController@index')->name('service');
     Route::get('/joinUs', 'JoinUsController@index')->name('joinUs');
@@ -28,6 +28,10 @@ Route::namespace('Pages')->group(function () {
     Route::get('/newsDetail/{id}', 'NewsController@getDetail')->name('news.detail');
     Route::get('/home/news', 'HomeController@homeNews')->name('home.homeNews');
 });
+
+
+
+
 
 // 驗證登入
 Route::post('/signIn', function (Request $request) {
@@ -57,7 +61,7 @@ Route::namespace('Admin')->middleware('auth.employee')->group(function () {
         })->name('index');
         // 帳號管理
         Route::group(['prefix' => 'employee', 'middleware' => ['acl.has:ACCOUNT_MANAGER']], function () {
-            Route::get('/', 'EmployeeController@index')->name('employee.index');
+            Route::get('/', 'Data@index')->name('employee.index');
             Route::get('/new', 'EmployeeController@new')->name('employee.new');
             Route::get('/edit/{id?}', 'EmployeeController@edit')->name('employee.edit');
             Route::post('/create', 'EmployeeController@create')->name('employee.create');
