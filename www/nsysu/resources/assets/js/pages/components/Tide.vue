@@ -20,7 +20,7 @@
           <v-marker-cluster ref="clusterRef">
 
 
-          <l-marker :lat-lng="item.local" v-for="item in data" :key="item.id"               @click="getData(item.station_id)">
+          <l-marker :lat-lng="item.local" v-for="item in data" :key="item.id"      @click="getData(item.station_id)">
             <!-- 標記點樣式判斷 -->
             <l-icon
               :icon-url="item.name === '夢時代購物中心'?icon.type.gold:icon.type.black"

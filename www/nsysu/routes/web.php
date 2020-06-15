@@ -29,6 +29,10 @@ Route::namespace('Pages')->group(function () {
     Route::get('/home/news', 'HomeController@homeNews')->name('home.homeNews');
 });
 
+
+
+
+
 // 驗證登入
 Route::post('/signIn', function (Request $request) {
     $previous_url = Cookie::get('previous_url');
@@ -57,7 +61,7 @@ Route::namespace('Admin')->middleware('auth.employee')->group(function () {
         })->name('index');
         // 帳號管理
         Route::group(['prefix' => 'employee', 'middleware' => ['acl.has:ACCOUNT_MANAGER']], function () {
-            Route::get('/', 'EmployeeController@index')->name('employee.index');
+            Route::get('/', 'Data@index')->name('employee.index');
             Route::get('/new', 'EmployeeController@new')->name('employee.new');
             Route::get('/edit/{id?}', 'EmployeeController@edit')->name('employee.edit');
             Route::post('/create', 'EmployeeController@create')->name('employee.create');
