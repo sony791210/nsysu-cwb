@@ -10,15 +10,14 @@ class SSTRepository
     /*
     *    將需要使用的Model通過建構函式例項化
     */
-    public function __construct (SST $sstmodel,
-                                SSTInfo $sstInfomodel)
+    public function __construct ()
     {   
-        $this->sstmodel=$sstmodel;
-        $this->sstInfomodel=$sstInfomodel;
+        $this->sstmodel=new SST();
+        $this->sstInfomodel=new SSTInfo();
     }
 
 
     public function getListInfo(){
-        $this->sstInfomodel->all();
+        return $this->sstInfomodel->all();
     }
 }

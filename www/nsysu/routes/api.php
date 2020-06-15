@@ -9,9 +9,9 @@ Route::namespace('API')->group(function () {
     //         Route::post('/sendquestion', 'SendEmailControllers@question');
     // });
 
-    // Route::prefix('cwbData')->group(function () {
-    //     Route::post('/getListInfo', 'CWBDataController@getListInfo');
-    // });
+    Route::prefix('cwbData')->group(function () {
+        Route::post('/getListInfo', 'CWBDataController@getListInfo');
+    });
 });
 
 

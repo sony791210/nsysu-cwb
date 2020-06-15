@@ -13,7 +13,7 @@ class CWBDataController extends RestLaravelController
 
     public function getListInfo(Request $request)
     {
-        dd('Q');
-        return $this->success(CWBFactory::create('SSTInfo')->getListInfo());
+        
+        return $this->success(CWBFactory::create('SST')->getListInfo());
     }
 }
