@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Pages;
 
-use Illuminate\Http\Request;
-use App\Module\CWB\CWBFactory;
+
+
 class AboutController extends BaseController
 {
     public function __construct()
@@ -21,8 +21,5 @@ class AboutController extends BaseController
         return view('pages.app');
     }
 
-    public function getlist(Request $request){
 
-        return CWBFactory::create('SSTInfo')->getlist();
-    }
 }

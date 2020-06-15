@@ -53,6 +53,20 @@ return [
             'strict' => false,
             'engine' => null,
         ],
+        'CWBData' => [
+            'driver' => 'mysql',
+            'host' => env('CWB_DB_CONNECTION', '127.0.0.1'),
+            'port' => env('CWB_DB_PORT', '3306'),
+            'database' => env('CWB_DB_DATABASE', 'forge'),
+            'username' => env('CWB_DB_USERNAME', 'forge'),
+            'password' => env('CWB_DB_PASSWORD', ''),
+            'unix_socket' => env('BackendDB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
 
         'Backend' => [
             'driver' => 'mysql',
