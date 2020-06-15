@@ -22,6 +22,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        // 建立生成repository檔案的命令
+        Commands\RepositoryMakeCommand::class,
+        Commands\ServiceMakeCommand::class
 
     ];
 
