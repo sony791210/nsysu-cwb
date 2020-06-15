@@ -16,7 +16,7 @@ Route::namespace('Pages')->group(function () {
     Route::get('/news', 'NewsController@index')->name('news');
     Route::get('/news/{id}', 'NewsController@detail');
     Route::get('/about', 'AboutController@index')->name('about');
-    Route::get('/about/tide', 'ActivitiesController@index');
+    Route::get('/about/tide', 'AboutController@tideIndex');
     Route::get('/activities', 'ActivitiesController@index')->name('activities');
     Route::get('/service', 'ServiceController@index')->name('service');
     Route::get('/joinUs', 'JoinUsController@index')->name('joinUs');

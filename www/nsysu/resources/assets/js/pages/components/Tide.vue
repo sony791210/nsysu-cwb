@@ -6,7 +6,8 @@
           ref="myMap"
           :zoom="zoom"
           :center="center"
-          :options="options">
+          :options="options"
+          >
           <!-- 載入圖資 -->
           <l-tile-layer :url="url" :attribution="attribution" />
           <!-- 自己所在位置 -->
@@ -16,7 +17,10 @@
             </l-popup>
           </l-marker>
           <!-- 創建標記點 -->
-          <l-marker :lat-lng="item.local" v-for="item in data" :key="item.id">
+          <v-marker-cluster ref="clusterRef">
+
+
+          <l-marker :lat-lng="item.local" v-for="item in data" :key="item.id"               @click="getData(item.station_id)">
             <!-- 標記點樣式判斷 -->
             <l-icon
               :icon-url="item.name === '夢時代購物中心'?icon.type.gold:icon.type.black"
@@ -25,23 +29,27 @@
               :icon-anchor="icon.iconAnchor"
               :popup-anchor="icon.popupAnchor"
               :shadow-size="icon.shadowSize"
-            />
+
+            />  
             <!-- 彈出視窗 -->
-            <l-popup>
+            <!-- <div><span @click="getData(item.station_id)"></span></div> -->
+            <l-popup >
               {{ item.name }}
             </l-popup>
           </l-marker>
+          </v-marker-cluster>
 
         </l-map>
       </div>
 
       <div class="right">
-        <!-- <div id="chartdiv" class="box"></div> -->
+        <div id="chartdiv" class="box"></div>
       </div>
 
     </div>
   </div>
 </template>
+
 <script>
 
 export default {
@@ -49,13 +57,13 @@ export default {
     return {
       img: '/../images/joinus_banner.png',
       data: [
-        { id: 1, name: "夢時代購物中心", local: [22.595153, 120.306923] },
-        { id: 2, name: "漢神百貨", local: [22.61942, 120.296386] },
-        { id: 3, name: "漢神巨蛋", local: [22.669603, 120.302288] },
-        { id: 4, name: "大統百貨", local: [22.630748, 120.318033] }
+        { id: 1,station_id:'a123', name: "夢時代購物中心", local: [22.595153, 120.306923] },
+        { id: 2,station_id:'a456', name: "漢神百貨", local: [22.61942, 120.296386] },
+        { id: 3,station_id:'a789', name: "漢神巨蛋", local: [22.669603, 120.302288] },
+        { id: 4,station_id:'b123', name: "大統百貨", local: [22.630748, 120.318033] }
       ],
-      zoom: 13,
-      center: [22.612961, 120.314167],
+      zoom: 7,
+      center: [23.6, 120.6],
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution: `© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`,
       options: {
@@ -70,27 +78,16 @@ export default {
         },
         shadowUrl:
           "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-        iconSize: [25, 41],
+        iconSize: [20, 30],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
         shadowSize: [41, 41]
       }
     }
   },
-  methods: {},
-  mounted() {
-    // 等地圖創建後執行
-    this.$nextTick(() => {
-      // 獲得目前位置
-      navigator.geolocation.getCurrentPosition(position => {
-        const p = position.coords;
-        // 將中心點設為目前的位置
-        this.center = [p.latitude, p.longitude];
-        // 將目前的位置的標記點彈跳視窗打開
-        this.$refs.location.mapObject.openPopup();
-      });
-    });
-    AmCharts.makeChart("chartdiv",
+  methods: {
+    amchar(){
+      AmCharts.makeChart("chartdiv",
       {
         "export": {
           "enabled": true,
@@ -117,6 +114,28 @@ export default {
         ]
       }
     );
+    },
+    getData(id){
+      
+      console.log(id);
+    }
+  },
+  mounted() {
+    console.log(window.data);
+    // 等地圖創建後執行
+    this.$nextTick(() => {
+      // 獲得目前位置
+      navigator.geolocation.getCurrentPosition(position => {
+        const p = position.coords;
+        // 將中心點設為目前的位置
+        // this.center = [p.latitude, p.longitude];
+        // 將目前的位置的標記點彈跳視窗打開
+        // this.$refs.location.mapObject.openPopup();
+      });
+    });
+
+    this.amchar();
+    
   },
   created() {
     

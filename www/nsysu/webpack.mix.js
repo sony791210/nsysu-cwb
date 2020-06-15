@@ -12,7 +12,9 @@ const fs = require('fs')
  */
 mix.copy('node_modules/ckeditor', 'public/js/ckeditor');
 mix.copy('resources/assets/js/admin/ckeditor_config.js', 'public/js/ckeditor/config.js');
-mix.copy('node_modules/amcharts3', 'public/js/amcharts');
+
+
+mix.copy('node_modules/amcharts3/amcharts', 'public/js/amcharts');
 
 // 後台
 mix.js('resources/assets/js/admin/app.js', 'public/js/admin')

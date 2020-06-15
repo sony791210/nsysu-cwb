@@ -19,21 +19,10 @@ import './plungins/leaflet'
 
 //amcharts3
 import 'amcharts3'
-import 'amcharts3/amcharts/serial'
+import 'amcharts3/amcharts/amcharts.js'
+import 'amcharts3/amcharts/serial.js'
 import "amcharts3/amcharts/plugins/export/export.css"
-import "amcharts3/amcharts/plugins/export/export.js"
-
-
-import "amcharts3/amcharts/plugins/export/libs/blob.js/blob.js"
-import "amcharts3/amcharts/plugins/export/libs/jszip/jszip.js"
-import "amcharts3/amcharts/plugins/export/libs/jszip/jszip.min.js"
-import "amcharts3/amcharts/plugins/export/libs/FileSaver.js/FileSaver.min.js"
-import "amcharts3/amcharts/plugins/export/libs/FileSaver.js/FileSaver.js"
-import "amcharts3/amcharts/plugins/export/libs/pdfmake/pdfmake.js"
-import "amcharts3/amcharts/plugins/export/libs/fabric.js/fabric.js"
-// import "amcharts3/amcharts/plugins/export/libs/xlsx/xlsx.js"
-
-import "amcharts3/amcharts/plugins/export/libs/pdfmake/vfs_fonts.js"
+import "amcharts3/amcharts/plugins/export/export.min.js"
 
 
 
@@ -42,7 +31,7 @@ import "amcharts3/amcharts/plugins/export/libs/pdfmake/vfs_fonts.js"
 // Vue.use(AmSerial);
 
 
-
+import 'default-passive-events'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

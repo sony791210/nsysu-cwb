@@ -13,7 +13,11 @@ class AboutController extends BaseController
 
     public function index()
     {
+        return view('pages.app');
+    }
 
+    public function tideIndex()
+    {
         return view('pages.app');
     }
 }

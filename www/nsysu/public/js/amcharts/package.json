@@ -1,19 +1,19 @@
 {
-  "_from": "amcharts3@^3.21.15",
+  "_from": "amcharts3",
   "_id": "amcharts3@3.21.15",
   "_inBundle": false,
   "_integrity": "sha512-t7/RA0iuDXN2QAneUThW87DbCnSUBYFWxSr2Hsd/+sPvfG0aqeUXEFpqsozcEl2y2XgCEQJ4jMaZ1X/CoYArGA==",
   "_location": "/amcharts3",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "amcharts3@^3.21.15",
+    "raw": "amcharts3",
     "name": "amcharts3",
     "escapedName": "amcharts3",
-    "rawSpec": "^3.21.15",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "^3.21.15"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#USER",
@@ -21,8 +21,8 @@
   ],
   "_resolved": "https://registry.npmjs.org/amcharts3/-/amcharts3-3.21.15.tgz",
   "_shasum": "1a8036c85da8e5248b23b5ca9875e42af058f028",
-  "_spec": "amcharts3@^3.21.15",
-  "_where": "/var/www/nsysu",
+  "_spec": "amcharts3",
+  "_where": "/home/ksd/docker/nsysu-cwb/www/nsysu",
   "author": {
     "name": "amCharts",
     "email": "contact@amcharts.com"
