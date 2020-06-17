@@ -159,6 +159,8 @@ export default {
           "dashLength": 1,
           "position": "left"
         }],
+        "backgroundAlpha":0.8,
+        "backgroundColor": "#FFFFFF",
         "mouseWheelZoomEnabled": true,
         "graphs": [{
           "id": "g1",
