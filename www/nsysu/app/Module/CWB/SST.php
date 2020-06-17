@@ -3,8 +3,8 @@
 namespace App\Module\CWB;
 
 use Illuminate\Database\Eloquent\Model;
-
-class SST extends Model
+use App\Module\Base;
+class SST extends Base
 {
     //
     protected $connection = 'CWBData';

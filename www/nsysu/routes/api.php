@@ -10,7 +10,8 @@ Route::namespace('API')->group(function () {
     // });
 
     Route::prefix('cwbData')->group(function () {
-        Route::post('/getListInfo', 'CWBDataController@getListInfo');
+        Route::get('/getListInfo/{name}', 'CWBDataController@getListInfo');
+        Route::get('/getDetailData/{name}', 'CWBDataController@getDetailData');
     });
 });
 

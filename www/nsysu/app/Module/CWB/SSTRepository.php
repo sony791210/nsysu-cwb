@@ -20,4 +20,8 @@ class SSTRepository
     public function getListInfo(){
         return $this->sstInfomodel->all();
     }
+
+    public function getDetailData($stationId){
+        return $this->sstmodel->where('station_id',$stationId)->orderBy('obs_time','asc')->get();
+    }
 }

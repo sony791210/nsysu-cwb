@@ -1,29 +1,30 @@
 <template>
   <div class="page-container joinus-page">
     <div class="mapbody">
-      <div class="left">
-        <l-map
-          ref="myMap"
-          :zoom="zoom"
-          :center="center"
-          :options="options"
-          >
-          <!-- 載入圖資 -->
-          <l-tile-layer :url="url" :attribution="attribution" />
-          <!-- 自己所在位置 -->
-          <l-marker ref="location" :lat-lng="center">
-            <l-popup>
-              你的位置
-            </l-popup>
-          </l-marker>
-          <!-- 創建標記點 -->
-          <v-marker-cluster ref="clusterRef">
+      
+      <l-map
+        ref="myMap"
+        :zoom="zoom"
+        :center="center"
+        :options="options"
+        style="position:absolute"
+        >
+        <!-- 載入圖資 -->
+        <l-tile-layer :url="url" :attribution="attribution" />
+        <!-- 自己所在位置 -->
+        <l-marker ref="location" :lat-lng="center">
+          <l-popup>
+            你的位置
+          </l-popup>
+        </l-marker>
+        <!-- 創建標記點 -->
+        <v-marker-cluster ref="clusterRef">
+          <!--  -->
 
-
-          <l-marker :lat-lng="item.local" v-for="item in data" :key="item.id"      @click="getData(item.station_id)">
+          <l-marker :lat-lng="item.local" v-for="item in data" :key="item.id"    @click="getDetailData(item.station_id)"  >
             <!-- 標記點樣式判斷 -->
             <l-icon
-              :icon-url="item.name === '夢時代購物中心'?icon.type.gold:icon.type.black"
+              :icon-url="icon.type.black"
               :shadow-url="icon.shadowUrl"
               :icon-size="icon.iconSize"
               :icon-anchor="icon.iconAnchor"
@@ -33,16 +34,19 @@
             />  
             <!-- 彈出視窗 -->
             <!-- <div><span @click="getData(item.station_id)"></span></div> -->
-            <l-popup >
+            <l-popup style="font-size:16px">
               {{ item.name }}
             </l-popup>
           </l-marker>
-          </v-marker-cluster>
+        </v-marker-cluster>
 
-        </l-map>
+      </l-map>
+
+
+      <div class="up">
       </div>
 
-      <div class="right">
+      <div class="down">
         <div id="chartdiv" class="box"></div>
       </div>
 
@@ -81,8 +85,9 @@ export default {
         iconSize: [20, 30],
         iconAnchor: [12, 41],
         popupAnchor: [1, -34],
-        shadowSize: [41, 41]
-      }
+        shadowSize: [41, 41],
+      },
+      chartData:this.generateChartData(),
     }
   },
   methods: {
@@ -113,11 +118,151 @@ export default {
           { "type": "Quattro Stagioni", "sold": 71 }
         ]
       }
-    );
+      );
     },
-    getData(id){
+    getListData(){
+      let vm = this
+      axios.get(siteUrl + '/api/cwbData/getListInfo'+'/SST').then(function(res) {
+        if (res.data.code === '00000') {
+          vm.data = res.data.data
+          console.log(vm.data);
+        }
+      })
+    },
+    getDetailData(stationId){
+      let vm = this
+      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+stationId).then(function(res) {
+        if (res.data.code === '00000') {
+          vm.chartData = res.data.data
+          console.log(vm.chartData);
+          vm.amcharLine();
+        }
+      })
+    },
+    amcharLine(){
+      var vm=this;
       
-      console.log(id);
+      AmCharts.makeChart("chartdiv",
+      {
+        "export": {
+          "enabled": true,
+          "position": "bottom-right",
+          "libs": { "autoLoad": true},
+          
+        },
+        "type": "serial",
+        "theme": "light",
+        "marginTop": 7,
+        "dataProvider": vm.chartData,
+        "valueAxes": [{
+          "axisAlpha": 0.2,
+          "dashLength": 1,
+          "position": "left"
+        }],
+        "mouseWheelZoomEnabled": true,
+        "graphs": [{
+          "id": "g1",
+          "balloonText": "[[value]]",
+          "bullet": "round",
+          "bulletBorderAlpha": 1,
+          "bulletColor": "#FFFFFF",
+          "hideBulletsCount": 50,
+          "title": "red line",
+          "valueField": "visits",
+          "useLineColorForBulletBorder": true,
+          "balloon": {
+            "drop": true
+          }
+        }],
+        "chartScrollbar": {
+          "autoGridCount": true,
+          "graph": "g1",
+          "scrollbarHeight": 40
+        },
+        "chartCursor": {
+          "limitToGraph": "g1"
+        },
+        "dataDateFormat":"YYYY-MM-DD JJ:NN:SS",
+        "categoryField": "date",
+        "categoryAxis": {
+          "parseDates": true,
+          "axisColor": "#DADADA",
+          "dashLength": 1,
+          "minPeriod":"hh",
+          "minorGridEnabled": true,
+          "dateFormats":	[{"period":"fff","format":"JJ:NN:SS"},{"period":"ss","format":"JJ:NN:SS"},{"period":"mm","format":"JJ:NN"},{"period":"hh","format":"JJ:NN"},{"period":"DD","format":"MMM DD"},{"period":"WW","format":"MMM DD"},{"period":"MM","format":"MMM"},{"period":"YYYY","format":"YYYY"}],
+        },
+        "listeners": [{
+          "event": "rendered",
+          "method": function(e) {
+            // set up generic mouse events
+            var sb = e.chart.chartScrollbar.set.node;
+            sb.addEventListener("mousedown", function() {
+              e.chart.mouseIsDown = true;
+            });
+            e.chart.chartDiv.addEventListener("mouseup", function() {
+              e.chart.mouseIsDown = false;
+              // zoomed finished
+              console.log("zoom finished", e.chart.lastZoomed);
+            });
+          }
+
+        }, {
+          "event": "zoomed",
+          "method": function(e) {
+            e.chart.lastZoomed = e;
+            console.log("ignoring zoomed");
+          }
+        }]
+      });
+        
+
+    },
+    getIndicatorImage(color, direction){
+      var triangle = "M0,0 L0,2 L2,1 Z";
+      if (direction == "up") {
+        return {
+          "svgPath": triangle,
+          "color": color,
+          "width": 10,
+          "height": 10,
+          "rotation": 270,
+          "offsetX": 5,
+          "offsetY": 6
+        };
+      } else {
+        return {
+          "svgPath": triangle,
+          "color": color,
+          "width": 10,
+          "height": 10,
+          "rotation": 90,
+          "offsetX": 5,
+          "offsetY": -5
+        };
+      }
+    },
+    generateChartData(){
+      var chartData = [];
+      var firstDate = new Date();
+      firstDate.setDate(firstDate.getDate() - 5);
+
+      for (var i = 0; i < 1000; i++) {
+        // we create date objects here. In your data, you can have date strings
+        // and then set format of your dates using chart.dataDateFormat property,
+        // however when possible, use date objects, as this will speed up chart rendering.
+        var newDate = new Date(firstDate);
+        newDate.setDate(newDate.getDate() + i);
+
+        var visits = Math.round(Math.random() * (40 + i / 5)) + 20 + i;
+
+        chartData.push({
+          date: newDate,
+          visits: visits
+        });
+      }
+      console.log(chartData);
+      return chartData;
     }
   },
   mounted() {
@@ -134,7 +279,8 @@ export default {
       });
     });
 
-    this.amchar();
+    this.amcharLine();
+    this.getListData();
     
   },
   created() {

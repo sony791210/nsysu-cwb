@@ -636,16 +636,27 @@
 
 @media (min-width: 800px) {
   .mapbody{
-    display: flex;
-    .left{
-      width: 30%;
-      height: 50vh;
+    // display: flex;
+    // flex-flow: column wrap; 
+    position: relative;
+    width:100%;
+    height:80vh;
+    .up{
+      width: 100%;
+      height: 70%;
+      position: absolute;
+      top:0;
+      z-index: -1;
     }
-    .right{
-      width: 70%;
+    .down{
+      width: 100%;
+      height: 30%;
+      position: absolute;
+      bottom:0;
+      z-index: 10101;
       .box{
-        height: 50vh;
-        width: 90%;
+        height: 100%;
+        width: 100%;
       }
     }
   }
