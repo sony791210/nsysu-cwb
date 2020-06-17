@@ -14,3 +14,6 @@ www/nsysu/.vagrant
 www/nsysu/Homestead.json
 www/nsysu/Homestead.yaml
 
+laradock/logs/*
+www/nsysu/public/*.json
+
