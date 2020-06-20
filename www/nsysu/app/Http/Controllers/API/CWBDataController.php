@@ -29,8 +29,9 @@ class CWBDataController extends RestLaravelController
     public function getDetailData(Request $request,$name)
     {
         $stationId=$request->query('stationId');
+        $time=$request->query('time');
         
-        $data=CWBFactory::create($name)->getDetailData($stationId);
+        $data=CWBFactory::create($name)->getDetailData($stationId,$time);
          
         $result=[];
         foreach($data as $item){

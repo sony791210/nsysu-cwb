@@ -1,6 +1,6 @@
 <template>
   <div class="page-container joinus-page">
-    <div class="mapbody">
+    <div class="mapbodyAll">
       
       <l-map
         ref="myMap"
@@ -44,6 +44,20 @@
 
 
       <div class="up">
+
+      </div>
+
+      <div class="middle">
+        <form class='test1'>
+          <select name="test1" @click="getDetailDataBySelectStation($event)" v-model="selectedStationValue">
+            <option  v-for="item in data" :key="item.id" :value="item.station_id"  > {{ item.name }}</option>
+          </select>
+        </form>
+        <form class='test2'>
+          <select name="test2" @click="getDetailDataBySelectTime($event)" v-model="selectedDuringTime">
+            <option  v-for="item in dateTimeDuring" :key="item.id" :value="item.value"  > {{ item.name }}</option>
+          </select>
+        </form>
       </div>
 
       <div class="down">
@@ -88,6 +102,15 @@ export default {
         shadowSize: [41, 41],
       },
       chartData:this.generateChartData(),
+      selectedStationValue:1,
+      selectedDuringTime:1,
+      dateTimeDuring:[
+        {id:1,name:'1個月',value:1},
+        {id:2,name:'3個月',value:3},
+        {id:3,name:'6個月',value:6},
+        {id:4,name:'1年',value:12},
+        {id:5,name:'全部',value:0},
+      ]
     }
   },
   methods: {
@@ -130,12 +153,40 @@ export default {
       })
     },
     getDetailData(stationId){
+      console.log(stationId);
       let vm = this
-      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+stationId).then(function(res) {
+      vm.selectedStationValue=stationId;
+      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+stationId+'&time='+vm.selectedDuringTime).then(function(res) {
+        if (res.data.code === '00000') {
+          vm.chartData = res.data.data;
+          
+          vm.amcharLine();
+          
+        }
+      })
+    },
+    getDetailDataBySelectStation(event){
+      console.log(event.target.value);
+      let vm = this
+      vm.selectedStationValue=event.target.value;
+      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+vm.selectedStationValue+'&time='+vm.selectedDuringTime).then(function(res) {
         if (res.data.code === '00000') {
           vm.chartData = res.data.data
-          console.log(vm.chartData);
           vm.amcharLine();
+          
+        }
+      })
+    },
+    getDetailDataBySelectTime(event){
+      console.log(event.target.value);
+      let vm = this
+      vm.selectedDuringTime=event.target.value;
+      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+vm.selectedStationValue+'&time='+vm.selectedDuringTime).then(function(res) {
+        if (res.data.code === '00000') {
+          vm.chartData = res.data.data
+          
+          vm.amcharLine();
+          
         }
       })
     },

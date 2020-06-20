@@ -15,5 +15,8 @@ www/nsysu/Homestead.json
 www/nsysu/Homestead.yaml
 
 laradock/logs/*
+laradock/logs/nginx/*.log
 www/nsysu/public/*.json
-
+www/nsysu/public/mix-manifest.json
+laradock/logs/nginx/laravel_access.log
+laradock/logs/nginx/laravel_access.log.1

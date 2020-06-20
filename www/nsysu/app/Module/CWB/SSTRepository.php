@@ -3,6 +3,7 @@ namespace App\Module\CWB;
 
 use App\Module\CWB\SST;
 use App\Module\CWB\SSTInfo;
+use Carbon\Carbon;
 class SSTRepository
 {
     protected $sstmodel;
@@ -21,7 +22,18 @@ class SSTRepository
         return $this->sstInfomodel->all();
     }
 
-    public function getDetailData($stationId){
-        return $this->sstmodel->where('station_id',$stationId)->orderBy('obs_time','asc')->get();
+    public function getDetailData($stationId,$time){
+        
+        return $this->sstmodel->where('station_id',$stationId)
+                    ->where(function($query) use($time){
+                        if($time==0){
+
+                        }else{
+                            // $query->whereTime('obs_time', '>=', Carbon::today()->subMonths($time));
+                            $query->where('obs_time', '>=', Carbon::today()->subMonths($time));
+                        }
+                        
+                    })
+                    ->orderBy('obs_time','asc')->get();
     }
 }
