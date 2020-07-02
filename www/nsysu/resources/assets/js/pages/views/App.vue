@@ -14,7 +14,7 @@
                   <a  @click.prevent="onRedirect(item.name+'/'+ jtem.name)" >
                   {{ jtem.label }}
                   </a>
-              </ul>
+            </ul>
             
          
         </router-link>
@@ -74,7 +74,11 @@ export default {
                   {
                     label:'潮位資料',
                     name:'tide'
-                  }]
+                  },
+                  {
+                    label:'風場資料',
+                    name:'windy'
+                  },]
         },
         {
           label: '活動花絮',

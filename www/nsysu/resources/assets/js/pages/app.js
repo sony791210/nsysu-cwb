@@ -32,7 +32,7 @@ import "amcharts3/amcharts/plugins/export/export.min.js"
 
 
 import 'default-passive-events'
-
+import JSCharting from 'jscharting-vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

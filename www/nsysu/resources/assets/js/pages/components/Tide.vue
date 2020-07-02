@@ -169,7 +169,7 @@ export default {
       console.log(event.target.value);
       let vm = this
       vm.selectedStationValue=event.target.value;
-      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+vm.selectedStationValue+'&time='+vm.selectedDuringTime).then(function(res) {
+      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+vm.selectedStationValue+'&here='+vm.selectedDuringTime).then(function(res) {
         if (res.data.code === '00000') {
           vm.chartData = res.data.data
           vm.amcharLine();

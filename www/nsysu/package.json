@@ -40,6 +40,8 @@
         "dayjs": "^1.7.7",
         "default-passive-events": "^1.0.10",
         "fs": "0.0.1-security",
+        "jscharting": "^2.9.0-9",
+        "jscharting-vue": "^1.1.0",
         "jsdom": "^16.2.2",
         "leaflet": "^1.6.0",
         "libphonenumber-js": "^1.7.22",

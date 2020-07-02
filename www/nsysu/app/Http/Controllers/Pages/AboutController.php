@@ -20,6 +20,9 @@ class AboutController extends BaseController
     {
         return view('pages.app');
     }
-
+    public function windyIndex()
+    {
+        return view('pages.app');
+    }
 
 }
