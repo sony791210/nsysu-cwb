@@ -21,8 +21,7 @@ import './plungins/leaflet'
 import 'amcharts3'
 import 'amcharts3/amcharts/amcharts.js'
 import 'amcharts3/amcharts/serial.js'
-import "amcharts3/amcharts/plugins/export/export.css"
-import "amcharts3/amcharts/plugins/export/export.min.js"
+
 
 
 
@@ -33,6 +32,7 @@ import "amcharts3/amcharts/plugins/export/export.min.js"
 
 import 'default-passive-events'
 import JSCharting from 'jscharting-vue';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

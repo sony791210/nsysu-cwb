@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div class="page-container joinus-page">
     
     <div id="chartDiv" style="max-width: 500px;height: 560px;margin: 0px auto"> </div>
   </div>
 </template>
 
+
 <script>
 
 import { JSC } from 'jscharting-vue';
+
 export default {
     data() {
       return {
@@ -15,9 +17,9 @@ export default {
       }
     },
     methods: {
-       renderChart(data){
-         JSC.chart('chartDiv', {
-            debug: true,
+       async renderChart(data){
+         await JSC.chart('chartDiv', {
+            debug: false,
             type:'radar column',
             animation_duration:1000,
             title:{label_text:'Wind Rose Chart',position:'center'},
@@ -60,19 +62,19 @@ export default {
             series:JSC.nest().key('speed').key('angle').rollup('percent').series(data).reverse()
           })
        },
-       getData(){
+       async getData(){
           let vm = this
-          JSC.fetch('./data/windRoseData.csv').then(function(response) {	return response.text();}).then(function(text) {
-            let data2 = JSC.csv2Json(text);
+          await JSC.fetch('./data/windRoseData.csv').then(function(response) {	return response.text();}).then(function(text) {
+            vm.data = JSC.csv2Json(text);
           });
        }
     },
-    mounted() {
+    async mounted() {
       var chart;
       console.log(this.data);
-      this.getData();
+      await this.getData();
       console.log(this.data);
-      // this.renderChart(this.data);
+      await this.renderChart(this.data);
     },
 
 }
