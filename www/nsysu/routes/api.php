@@ -12,6 +12,8 @@ Route::namespace('API')->group(function () {
     Route::prefix('cwbData')->group(function () {
         Route::get('/getListInfo/{name}', 'CWBDataController@getListInfo');
         Route::get('/getDetailData/{name}', 'CWBDataController@getDetailData');
+        Route::get('/getDetailDataByBuoy/{name}', 'CWBDataController@getDetailDataByBuoy');
+        Route::get('/test2', 'CWBDataController@test2');
     });
 });
 

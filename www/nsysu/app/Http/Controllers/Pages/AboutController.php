@@ -20,7 +20,7 @@ class AboutController extends BaseController
     {
         return view('pages.app');
     }
-    public function windyIndex()
+    public function buoyIndex()
     {
         return view('pages.app');
     }

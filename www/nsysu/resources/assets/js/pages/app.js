@@ -21,7 +21,8 @@ import './plungins/leaflet'
 import 'amcharts3'
 import 'amcharts3/amcharts/amcharts.js'
 import 'amcharts3/amcharts/serial.js'
-
+import "amcharts3/amcharts/plugins/export/export.css"
+import "amcharts3/amcharts/plugins/export/export.min.js"
 
 
 

@@ -18,7 +18,7 @@
     <body id="page-top">
         <div id="app"></div>
         <script src="{{ mix('js/pages/app.js') }}"></script>
-        
+        <script type="text/javascript" src="https://code.jscharting.com/latest/modules/types.js"></script> 
     </body>
 </html>
 
