@@ -1,70 +1,8 @@
 <template>
   <div class="page-container joinus-page">
-    <div class="mapbodyAll">
-      
-      <l-map
-        ref="myMap"
-        :zoom="zoom"
-        :center="center"
-        :options="options"
-        style="position:absolute"
-        >
-        <!-- 載入圖資 -->
-        <l-tile-layer :url="url" :attribution="attribution" />
-        <!-- 自己所在位置 -->
-        <l-marker ref="location" :lat-lng="center">
-          <l-popup>
-            你的位置
-          </l-popup>
-        </l-marker>
-        <!-- 創建標記點 -->
-        <v-marker-cluster ref="clusterRef">
-          <!--  -->
 
-          <l-marker :lat-lng="item.local" v-for="item in data" :key="item.id"    @click="getDetailData(item.station_id)"  >
-            <!-- 標記點樣式判斷 -->
-            <l-icon
-              :icon-url="icon.type.black"
-              :shadow-url="icon.shadowUrl"
-              :icon-size="icon.iconSize"
-              :icon-anchor="icon.iconAnchor"
-              :popup-anchor="icon.popupAnchor"
-              :shadow-size="icon.shadowSize"
+      <div id="map" style="height:900px"></div>
 
-            />  
-            <!-- 彈出視窗 -->
-            <!-- <div><span @click="getData(item.station_id)"></span></div> -->
-            <l-popup style="font-size:16px">
-              {{ item.name }}
-            </l-popup>
-          </l-marker>
-        </v-marker-cluster>
-
-      </l-map>
-
-
-      <div class="up">
-
-      </div>
-
-      <div class="middle">
-        <form class='test1'>
-          <select name="test1" @click="getDetailDataBySelectStation($event)" v-model="selectedStationValue">
-            <option  v-for="item in data" :key="item.id" :value="item.station_id"  > {{ item.name }}</option>
-          </select>
-        </form>
-        <form class='test2'>
-          <select name="test2" @click="getDetailDataBySelectTime($event)" v-model="selectedDuringTime">
-            <option  v-for="item in dateTimeDuring" :key="item.id" :value="item.value"  > {{ item.name }}</option>
-          </select>
-        </form>
-      </div>
-
-      <div class="down">
-        <div id="chartdiv" class="box"></div>
-      </div>
-
-    </div>
   </div>
 </template>
 
@@ -73,268 +11,64 @@
 export default {
   data() {
     return {
-      img: '/../images/joinus_banner.png',
-      data: [
-        { id: 1,station_id:'a123', name: "夢時代購物中心", local: [22.595153, 120.306923] },
-        { id: 2,station_id:'a456', name: "漢神百貨", local: [22.61942, 120.296386] },
-        { id: 3,station_id:'a789', name: "漢神巨蛋", local: [22.669603, 120.302288] },
-        { id: 4,station_id:'b123', name: "大統百貨", local: [22.630748, 120.318033] }
-      ],
-      zoom: 7,
-      center: [23.6, 120.6],
-      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      attribution: `© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`,
-      options: {
-        zoomControl: false
-      },
-      icon: {
-        type: {
-          black:
-            "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png",
-          gold:
-            "https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png"
-        },
-        shadowUrl:
-          "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
-        iconSize: [20, 30],
-        iconAnchor: [12, 41],
-        popupAnchor: [1, -34],
-        shadowSize: [41, 41],
-      },
-      chartData:this.generateChartData(),
-      selectedStationValue:1,
-      selectedDuringTime:1,
-      dateTimeDuring:[
-        {id:1,name:'1個月',value:1},
-        {id:2,name:'3個月',value:3},
-        {id:3,name:'6個月',value:6},
-        {id:4,name:'1年',value:12},
-        {id:5,name:'全部',value:0},
-      ]
-    }
-  },
-  methods: {
-    amchar(){
-      AmCharts.makeChart("chartdiv",
-      {
-        "export": {
-          "enabled": true,
-          "libs": { "autoLoad": true},
-          
-        },
-        
-        "type": "serial",
-        "categoryField": "type",
-        "chartCursor": {},
-        "graphs": [
-          {
-            "type": "column",
-            "title": "Pizza types",
-            "valueField": "sold",
-            "fillAlphas": 0.8
-          }
-        ],
-        "dataProvider": [
-          { "type": "Margherita", "sold": 120 },
-          { "type": "Funghi", "sold": 82 },
-          { "type": "Capricciosa", "sold": 78 },
-          { "type": "Quattro Stagioni", "sold": 71 }
-        ]
-      }
-      );
-    },
-    getListData(){
-      let vm = this
-      axios.get(siteUrl + '/api/cwbData/getListInfo'+'/SST').then(function(res) {
-        if (res.data.code === '00000') {
-          vm.data = res.data.data
-          console.log(vm.data);
-        }
-      })
-    },
-    getDetailData(stationId){
-      console.log(stationId);
-      let vm = this
-      vm.selectedStationValue=stationId;
-      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+stationId+'&time='+vm.selectedDuringTime).then(function(res) {
-        if (res.data.code === '00000') {
-          vm.chartData = res.data.data;
-          
-          vm.amcharLine();
-          
-        }
-      })
-    },
-    getDetailDataBySelectStation(event){
-      console.log(event.target.value);
-      let vm = this
-      vm.selectedStationValue=event.target.value;
-      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+vm.selectedStationValue+'&here='+vm.selectedDuringTime).then(function(res) {
-        if (res.data.code === '00000') {
-          vm.chartData = res.data.data
-          vm.amcharLine();
-          
-        }
-      })
-    },
-    getDetailDataBySelectTime(event){
-      console.log(event.target.value);
-      let vm = this
-      vm.selectedDuringTime=event.target.value;
-      axios.get(siteUrl + '/api/cwbData/getDetailData'+'/SST'+'?stationId='+vm.selectedStationValue+'&time='+vm.selectedDuringTime).then(function(res) {
-        if (res.data.code === '00000') {
-          vm.chartData = res.data.data
-          
-          vm.amcharLine();
-          
-        }
-      })
-    },
-    amcharLine(){
-      var vm=this;
-      
-      AmCharts.makeChart("chartdiv",
-      {
-        "export": {
-          "enabled": true,
-          "position": "bottom-right",
-          "libs": { "autoLoad": true},
-          
-        },
-        "type": "serial",
-        "theme": "light",
-        "marginTop": 7,
-        "dataProvider": vm.chartData,
-        "valueAxes": [{
-          "axisAlpha": 0.2,
-          "dashLength": 1,
-          "position": "left"
-        }],
-        "backgroundAlpha":0.8,
-        "backgroundColor": "#FFFFFF",
-        "mouseWheelZoomEnabled": true,
-        "graphs": [{
-          "id": "g1",
-          "balloonText": "[[value]]",
-          "bullet": "round",
-          "bulletBorderAlpha": 1,
-          "bulletColor": "#FFFFFF",
-          "hideBulletsCount": 50,
-          "title": "red line",
-          "valueField": "visits",
-          "useLineColorForBulletBorder": true,
-          "balloon": {
-            "drop": true
-          }
-        }],
-        "chartScrollbar": {
-          "autoGridCount": true,
-          "graph": "g1",
-          "scrollbarHeight": 40
-        },
-        "chartCursor": {
-          "limitToGraph": "g1"
-        },
-        "dataDateFormat":"YYYY-MM-DD JJ:NN:SS",
-        "categoryField": "date",
-        "categoryAxis": {
-          "parseDates": true,
-          "axisColor": "#DADADA",
-          "dashLength": 1,
-          "minPeriod":"hh",
-          "minorGridEnabled": true,
-          "dateFormats":	[{"period":"fff","format":"JJ:NN:SS"},{"period":"ss","format":"JJ:NN:SS"},{"period":"mm","format":"JJ:NN"},{"period":"hh","format":"JJ:NN"},{"period":"DD","format":"MMM DD"},{"period":"WW","format":"MMM DD"},{"period":"MM","format":"MMM"},{"period":"YYYY","format":"YYYY"}],
-        },
-        "listeners": [{
-          "event": "rendered",
-          "method": function(e) {
-            // set up generic mouse events
-            var sb = e.chart.chartScrollbar.set.node;
-            sb.addEventListener("mousedown", function() {
-              e.chart.mouseIsDown = true;
-            });
-            e.chart.chartDiv.addEventListener("mouseup", function() {
-              e.chart.mouseIsDown = false;
-              // zoomed finished
-              console.log("zoom finished", e.chart.lastZoomed);
-            });
-          }
-
-        }, {
-          "event": "zoomed",
-          "method": function(e) {
-            e.chart.lastZoomed = e;
-            console.log("ignoring zoomed");
-          }
-        }]
-      });
-        
-
-    },
-    getIndicatorImage(color, direction){
-      var triangle = "M0,0 L0,2 L2,1 Z";
-      if (direction == "up") {
-        return {
-          "svgPath": triangle,
-          "color": color,
-          "width": 10,
-          "height": 10,
-          "rotation": 270,
-          "offsetX": 5,
-          "offsetY": 6
-        };
-      } else {
-        return {
-          "svgPath": triangle,
-          "color": color,
-          "width": 10,
-          "height": 10,
-          "rotation": 90,
-          "offsetX": 5,
-          "offsetY": -5
-        };
-      }
-    },
-    generateChartData(){
-      var chartData = [];
-      var firstDate = new Date();
-      firstDate.setDate(firstDate.getDate() - 5);
-
-      for (var i = 0; i < 1000; i++) {
-        // we create date objects here. In your data, you can have date strings
-        // and then set format of your dates using chart.dataDateFormat property,
-        // however when possible, use date objects, as this will speed up chart rendering.
-        var newDate = new Date(firstDate);
-        newDate.setDate(newDate.getDate() + i);
-
-        var visits = Math.round(Math.random() * (40 + i / 5)) + 20 + i;
-
-        chartData.push({
-          date: newDate,
-          visits: visits
-        });
-      }
-      console.log(chartData);
-      return chartData;
+      data:[{"header": {"parameterUnit": "m.s-1", "parameterNumber": 2, "dx": 1.0, "dy": 1.0, "parameterNumberName": "Eastward current", "la1": -7.5, "la2": -28.5, "parameterCategory": 2, "lo2": 156, "nx": 14, "ny": 22, "refTime": "2017-02-01 23:00:00", "lo1": 143}, "data": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.33000001311302185, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.12999999523162842, -0.0, 0.6499999761581421, 0.44999998807907104, 0.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.03999999910593033, -0.1899999976158142, 0.4300000071525574, 0.23999999463558197, 0.44999998807907104, 0.23000000417232513, 0.4399999976158142, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.1599999964237213, 0.0, -0.019999999552965164, -0.05000000074505806, 0.23000000417232513, 0.3700000047683716, 0.550000011920929, 0.2800000011920929, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.11999999731779099, -0.33000001311302185, 0.05999999865889549, 0.12999999523162842, 0.3199999928474426, 0.28999999165534973, 0.2800000011920929, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.20999999344348907, -0.30000001192092896, -0.8199999928474426, -0.27000001072883606, -0.019999999552965164, 0.23000000417232513, 0.20000000298023224, 0.10000000149011612, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.12999999523162842, -0.1899999976158142, -0.18000000715255737, -0.44999998807907104, 0.11999999731779099, -0.05000000074505806, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.20999999344348907, -0.1899999976158142, -0.27000001072883606, -0.6499999761581421, -0.3199999928474426, -0.3199999928474426, -0.07000000029802322, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.23999999463558197, -0.14000000059604645, -0.15000000596046448, -0.09000000357627869, -0.3799999952316284, -0.33000001311302185, -0.17000000178813934, -0.28999999165534973, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.03999999910593033, -0.17000000178813934, 0.07000000029802322, -0.27000001072883606, -0.10999999940395355, -0.1899999976158142, -0.019999999552965164, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.14000000059604645, -0.05999999865889549, -0.05000000074505806, -0.36000001430511475, -0.3700000047683716, -0.20000000298023224, -0.20999999344348907, -0.09000000357627869, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05000000074505806, -0.019999999552965164, 0.1599999964237213, 0.3100000023841858, -0.18000000715255737, -0.1599999964237213, -0.25999999046325684, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05999999865889549, -0.27000001072883606, -0.27000001072883606, 0.4099999964237213, 0.23999999463558197, -0.09000000357627869, 0.009999999776482582, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.20999999344348907, -0.3499999940395355, -0.23999999463558197, 0.009999999776482582, -0.14000000059604645, -0.18000000715255737, -0.1599999964237213, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.25, -0.23000000417232513, 0.17000000178813934, -0.17000000178813934, 0.09000000357627869, 0.1599999964237213, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.05000000074505806, -0.1899999976158142, 0.10999999940395355, -0.03999999910593033, -0.10999999940395355, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.009999999776482582, -0.009999999776482582, -0.23999999463558197, -0.33000001311302185, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.25999999046325684, -0.03999999910593033, 0.11999999731779099, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.11999999731779099, -0.17000000178813934, 0.25999999046325684, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.05000000074505806, -0.6100000143051147, -0.2199999988079071, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5600000023841858, 0.3100000023841858, 0.36000001430511475]}, {"header": {"parameterUnit": "m.s-1", "parameterNumber": 3, "dx": 1.0, "dy": 1.0, "parameterNumberName": "Northward current", "la1": -7.5, "la2": -28.5, "parameterCategory": 2, "lo2": 156, "nx": 14, "ny": 22, "refTime": "2017-02-01 23:00:00", "lo1": 143}, "data": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1899999976158142, 0.28999999165534973, 0.019999999552965164, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.2800000011920929, 0.20999999344348907, 0.44999998807907104, 0.11999999731779099, -0.3100000023841858, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.18000000715255737, 0.36000001430511475, 0.20000000298023224, -0.20000000298023224, -0.25, -0.3100000023841858, 0.10000000149011612, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.15000000596046448, 0.38999998569488525, 0.14000000059604645, -0.1599999964237213, -0.28999999165534973, -0.1599999964237213, -0.1599999964237213, 0.10999999940395355, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.75, 0.23000000417232513, -0.07000000029802322, -0.3400000035762787, -0.18000000715255737, -0.3799999952316284, -0.3700000047683716, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.17000000178813934, 0.3400000035762787, -0.009999999776482582, -0.029999999329447746, -0.25999999046325684, -0.07000000029802322, -0.25999999046325684, -0.33000001311302185, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05999999865889549, 0.03999999910593033, 0.05000000074505806, -0.1599999964237213, -0.0, 0.009999999776482582, -0.2199999988079071, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.05000000074505806, -0.2199999988079071, -0.05999999865889549, -0.3799999952316284, -0.20000000298023224, -0.07000000029802322, 0.2199999988079071, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.019999999552965164, 0.2199999988079071, 0.05000000074505806, -0.10999999940395355, -0.25, -0.12999999523162842, 0.11999999731779099, 0.07000000029802322, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.07000000029802322, -0.05999999865889549, -0.1899999976158142, -0.41999998688697815, -0.10000000149011612, -0.12999999523162842, 0.009999999776482582, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.10000000149011612, -0.12999999523162842, 0.019999999552965164, -0.28999999165534973, -0.12999999523162842, 0.20000000298023224, 0.07999999821186066, -0.4399999976158142, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.11999999731779099, -0.7599999904632568, -0.49000000953674316, -0.550000011920929, -0.10000000149011612, 0.09000000357627869, 0.07000000029802322, -0.23999999463558197, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.47999998927116394, -0.5299999713897705, -0.550000011920929, -0.47999998927116394, -0.05000000074505806, 0.03999999910593033, -0.3700000047683716, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5400000214576721, -0.019999999552965164, -0.3199999928474426, -0.18000000715255737, -0.09000000357627869, -0.1599999964237213, -0.3499999940395355, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.029999999329447746, 0.029999999329447746, -0.15000000596046448, -0.23000000417232513, -0.019999999552965164, -0.3799999952316284, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.1599999964237213, -0.18000000715255737, -0.05999999865889549, 0.5199999809265137, -0.07000000029802322, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.3100000023841858, -0.4699999988079071, 0.2800000011920929, -0.41999998688697815, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.5799999833106995, 0.019999999552965164, -0.4000000059604645, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.47999998927116394, -0.019999999552965164, -0.09000000357627869, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.7699999809265137, -0.019999999552965164, -0.05999999865889549, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -1.1699999570846558, 0.33000001311302185, -0.05000000074505806]}]
     }
   },
   mounted() {
-    console.log(window.data);
-    // 等地圖創建後執行
-    this.$nextTick(() => {
-      // 獲得目前位置
-      navigator.geolocation.getCurrentPosition(position => {
-        const p = position.coords;
-        // 將中心點設為目前的位置
-        // this.center = [p.latitude, p.longitude];
-        // 將目前的位置的標記點彈跳視窗打開
-        // this.$refs.location.mapObject.openPopup();
-      });
-    });
+    var vm=this;
+    console.log(vm.data);
+    var mymap = L.map('map').setView([-22, 150], 5);;
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: 'pk.eyJ1IjoiYXBwbGU3OTEyMTAiLCJhIjoiY2s2aGp1Zjl6MHZveTNrbXRld2ViZzdtcSJ9.P9qkKbnkCZPCqGDXHbr2aA'
+      }).addTo(mymap);
+    // var velocity = L.velocityLayer({
+    //   displayValues: true,
+    //   displayOptions: {
+    //     velocityType: "Global Wind",
+    //     position: "bottomleft",
+    //     emptyString: "No velocity data",
+    //     angleConvention: "bearingCW",
+    //     displayPosition: "bottomleft",
+    //     displayEmptyString: "No velocity data",
+    //     speedUnit: "kt"
+    //   },
+    //   data: vm.data, // see demo/*.json, or wind-js-server for example data service
 
-    this.amcharLine();
-    this.getListData();
-    
+    //   // OPTIONAL
+    //   minVelocity: 0, // used to align color scale
+    //   maxVelocity: 10, // used to align color scale
+    //   velocityScale: 0.005, // modifier for particle animations, arbitrarily defaults to 0.005
+    //   colorScale: [], // define your own array of hex/rgb colors
+    //   onAdd: null, // callback function
+    //   onRemove: null, // callback function
+    //   opacity: 0.97, // layer opacity, default 0.97
+
+    //   // optional pane to add the layer, will be created if doesn't exist
+    //   // leaflet v1+ only (falls back to overlayPane for < v1)
+    //   paneName: "overlayPane"
+    // });
+    let velocity = L.velocityLayer({
+      displayValues: true,
+      displayOptions: {
+        velocityType: 'GBR Wind',
+        position: 'bottomleft',//REQUIRED !
+        emptyString: 'No velocity data', //REQUIRED !
+        angleConvention: 'bearingCW',
+        displayPosition: 'bottomleft',
+        displayEmptyString: 'No velocity data',
+        speedUnit: 'm/s'
+      },
+      data: vm.data,
+      maxVelocity: 100,
+      velocityScale: 0.5,
+    });
+    velocity.addTo(mymap);
+
   },
   created() {
     

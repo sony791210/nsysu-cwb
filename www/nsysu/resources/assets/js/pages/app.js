@@ -17,12 +17,23 @@ import VueYoutube from 'vue-youtube'
 import VueScrollTo from 'vue-scrollto'
 import './plungins/leaflet'
 
+
+
 //amcharts3
 import 'amcharts3'
 import 'amcharts3/amcharts/amcharts.js'
 import 'amcharts3/amcharts/serial.js'
 import "amcharts3/amcharts/plugins/export/export.css"
 import "amcharts3/amcharts/plugins/export/export.min.js"
+
+
+
+// import * as L from "leaflet";
+import "leaflet/dist/leaflet.css"
+import "leaflet/dist/leaflet.js"
+
+import "leaflet-velocity-ts/dist/leaflet-velocity.js"
+
 
 
 

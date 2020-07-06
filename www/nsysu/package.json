@@ -44,6 +44,7 @@
         "jscharting-vue": "^1.1.0",
         "jsdom": "^16.2.2",
         "leaflet": "^1.6.0",
+        "leaflet-velocity-ts": "^1.1.7",
         "libphonenumber-js": "^1.7.22",
         "net": "^1.0.2",
         "tls": "0.0.1",
@@ -56,6 +57,7 @@
         "vue2-leaflet": "^2.5.2",
         "vue2-leaflet-markercluster": "^3.1.0",
         "vue2-twzipcode": "^2.0.3",
+        "wind-js-leaflet": "^2.0.5",
         "xmldom": "^0.3.0"
     },
     "husky": {
