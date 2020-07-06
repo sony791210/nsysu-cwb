@@ -8,7 +8,6 @@
         :center="center"
         :options="options"
         style="position:absolute"
-        class="map"
         >
         <!-- 載入圖資 -->
         <l-tile-layer :url="url" :attribution="attribution" />

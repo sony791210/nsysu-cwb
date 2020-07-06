@@ -8,7 +8,7 @@ import Activities from './components/Activities';
 import Service from './components/Service';
 import JoinUs from './components/JoinUs';
 import Tide from './components/Tide';
-import Buoy from './components/Buoy';
+import Windy from './components/Windy';
 import Traffic from './components/Traffic';
 import Faq from './components/Faq';
 import Contact from './components/Contact';
@@ -48,9 +48,9 @@ const router = new VueRouter({
             component: Tide
         },
         {
-            path:'/about/buoy',
-            name: 'buoy',
-            component: Buoy
+            path:'/about/windy',
+            name: 'windy',
+            component: Windy
         },
         {
             path:'/activities',

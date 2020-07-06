@@ -43,20 +43,5 @@ class CWBDataController extends RestLaravelController
         return $this->success($result);
     }
 
-
-    public function getDetailDataByBuoy(Request $request,$name){
-        $stationId=$request->query('stationId');
-        $time=$request->query('time');
-        if($name=='wind'){
-            $data=CWBFactory::create('Buoy')->getDetailDataWind($stationId,'1');
-        }elseif($name=='wave'){
-            $data=CWBFactory::create('Buoy')->getDetailDataWave($stationId,'1');
-        }elseif($name=='sst'){
-            $data=CWBFactory::create('Buoy')->getDetailDataSST($stationId,'1');
-        }
-        
-        return $this->success($data);
-    }
-
     
 }

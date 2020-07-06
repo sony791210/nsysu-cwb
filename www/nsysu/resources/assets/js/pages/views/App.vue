@@ -76,8 +76,8 @@ export default {
                     name:'tide'
                   },
                   {
-                    label:'浮標資料',
-                    name:'buoy'
+                    label:'風場資料',
+                    name:'windy'
                   },]
         },
         {
