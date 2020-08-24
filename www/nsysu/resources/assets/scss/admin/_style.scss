@@ -1,0 +1,28 @@
+.login-page {
+  .icon {
+    border-radius: 50px;
+    box-shadow: 3px 3px 5px #aaa;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+
+  .el-radio.is-bordered {
+    margin: 5px !important;
+  }
+}
+
+
+@media print {
+
+  html,
+  body {
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+}

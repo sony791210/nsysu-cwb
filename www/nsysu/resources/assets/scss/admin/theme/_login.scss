@@ -1,0 +1,62 @@
+.card-login {
+  max-width: 27rem;
+  margin-top: 10%;
+  padding: 20px;
+  border: none;
+
+  .card-header {
+    border: none;
+    background-color: $white;
+
+    h4 {
+      margin-top: 30px;
+    }
+  }
+
+  .el-tabs--card>.el-tabs__header {
+    border: none !important;
+  }
+
+  .el-tabs__nav {
+    width: 100%;
+    border: none !important;
+
+    .el-tabs__item {
+      width: 50%;
+      text-align: center;
+      border: 1px solid $blue !important;
+    }
+    .el-tabs__item:hover {
+      color: $blue;
+    }
+
+    .el-tabs__item.is-active {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+
+  .card-body {
+    padding: 0.5rem;
+
+    .login-btn {
+      background-color: $orange;
+      border-color: $orange;
+      color: $white;
+      margin-top: 40px;
+    }
+
+    .login-type-warp {
+      text-align: center;
+      margin-bottom: 15px;
+
+      .el-radio.is-bordered {
+        padding: 10px 15px 0px 15px;
+      }
+    }
+  }
+}
+
+.card-register {
+  max-width: 40rem;
+}

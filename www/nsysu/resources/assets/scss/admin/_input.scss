@@ -1,0 +1,21 @@
+.input-password {
+    width: 100%;
+    position: relative;
+}
+
+input {
+    padding-right: 30px;
+
+}
+
+input.input-lg+.icon {
+    top: 10px;
+}
+
+.input-password>.icon {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: #777777;
+    font-size: 17px;
+}

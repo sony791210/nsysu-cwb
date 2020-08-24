@@ -1,0 +1,10 @@
+{
+    "name": "ksd/sms",
+    "authors": [
+        {
+            "name": "kevinkao",
+            "email": "k6460937@gmail.com"
+        }
+    ],
+    "require": {}
+}

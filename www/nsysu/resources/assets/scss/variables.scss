@@ -1,0 +1,50 @@
+
+// Body
+$body-bg: #f5f8fa;
+
+// Typography
+$font-family-sans-serif: "Raleway", sans-serif;
+$font-family-micro-jh: 'Microsoft JhengHei';
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+$font-family-s-tw: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', 'Helvetica Neue', 'Helvetica', sans-serif;
+
+// Color
+$black: #000000;
+$white: #FFF;
+$gray: #aaaaaa;
+$light-gray: #eeeeee;
+$blue: #009ce1;
+$orange: #ff8209;
+$apple-green: #90c320;
+$red: #f44336;
+$black-red: #620c10;
+$gold: #FFDA82;
+$custom-gray: #969696;
+$liner-green:linear-gradient(45deg,#62b480,#bfd05d,#62b480);
+
+$color-collection: (
+	'white': $white,
+	'apple-green': $apple-green,
+	'orange': $orange,
+	'black': $black,
+	'blue': $blue,
+	'gray': $gray,
+	'light-gray': $light-gray,
+	'red': $red,
+	'black-red': $black-red,
+	'gold': $gold,
+	'custom-gray': $custom-gray,
+	'liner-green':$liner-green
+);
+
+$screen-lg: 1200px;
+$screen-md: 991px;
+$screen-sm: 768px;
+$screen-xs: 560px;
+$screen-xxs: 479px;
+$max-screen-mobile: 700px;
+$min-screen-mobile: 480px;
+
+$max-width: 1170px;
+$min-width: 1024px;

@@ -1,0 +1,84 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^7.1.3",
+        "bensampo/laravel-enum": "^1.28",
+        "brozot/laravel-fcm": "^1.2",
+        "chumper/zipper": "^1.0",
+        "doctrine/dbal": "^2.8",
+        "fideloper/proxy": "^4.0",
+        "firebase/php-jwt": "^5.0",
+        "giggsey/libphonenumber-for-php": "^8.10",
+        "guzzlehttp/guzzle": "^6.3",
+        "hashids/hashids": "^3.0",
+        "hoyvoy/laravel-cross-database-subqueries": "^5.6",
+        "intervention/image": "^2.4",
+        "laravel-validation-rules/credit-card": "^1.1",
+        "laravel/framework": "^5.8.0",
+        "laravel/tinker": "^1.0",
+        "maatwebsite/excel": "~2.1.0",
+        "phpoffice/phpword": "^0.17.0",
+        "predis/predis": "^1.1",
+        "spatie/laravel-paginateroute": "^2.7",
+        "unisharp/laravel-filemanager": "~1.8",
+        "nesbot/carbon": "2.21.3 as 1.34.0",
+        "kylekatarnls/laravel-carbon-2": "^1.0.0"
+    },
+    "require-dev": {
+        "filp/whoops": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "^1.0",
+        "nunomaduro/collision": "^2.0",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/",
+            "Ksd\\": "src/Ksd/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ],
+        "format": [
+            "vendor/bin/php-cs-fixer fix"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

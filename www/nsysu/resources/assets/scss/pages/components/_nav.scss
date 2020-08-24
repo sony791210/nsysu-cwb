@@ -1,0 +1,83 @@
+.navbar {
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    color: $black;
+    height: $navbar-height;
+    padding: 0;
+    .navbar-brand {
+        margin-right: 0;
+    }
+    .tab-group {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        .tab-group-item {
+            display: block;
+            padding: 0 10px;
+            margin-bottom: -1px;
+            line-height: $navbar-height;
+            cursor: pointer;
+            transition: transform .2s;
+            position: relative;
+            &:hover {
+                color: $gold;
+                transform: scale(1.1);
+            }
+            &:hover > .link-content  {
+                display: block;
+            }
+            .img{
+                width: 150px;
+            }
+            .link-content {
+                background-color: hsla(0,0%,100%,.9); 
+                // left: 50%; 
+                // transform: translateX(-50%); 
+                // position: absolute; 
+                top: 69px; 
+                white-space: nowrap; 
+                text-align: center; 
+                cursor: pointer;
+                color:$black;
+                list-style: none;
+                padding: 10px;
+                display: none;
+                width: 100%;
+
+            }
+        }
+    }
+    .navbar-icon {
+        position: absolute;
+        display: none;
+        @include font-size(28);
+        line-height: $mobile-navbar-height;
+        padding-left: 20px;
+        color: $gold;
+    }
+    .navbar-title {
+        margin: auto;
+        text-align: center;
+        @include font-size(18);
+        line-height: 60px;
+        letter-spacing: 3.2px;
+        display: none;
+    }
+}
+
+@media (max-width: 804px) {
+    .navbar {
+        height: $mobile-navbar-height;
+        align-items: flex-start;
+        .tab-group {
+            display: none;
+        }
+        .navbar-icon {
+            display: initial;
+        }
+        .navbar-title {
+            display: initial;
+        }
+    }
+}
