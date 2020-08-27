@@ -15,25 +15,26 @@ export default {
     }
   },
   methods: {
-    getData(){
+    async getData(){
       let vm=this
-      axios.get(siteUrl + '/api/cwbData/getSurfaceData').then(function(res) {
+      await axios.get(siteUrl + '/api/cwbData/getSurfaceData').then(function(res) {
         if (res.data.code === '00000') {
           // 
           var abc = '[ {"hear":"test","data":[123]},{"hear":"test2","data":[34]}]'
 
           console.log(JSON.parse(abc))
           console.log('test')
-          console.log(res.data.data);
-          console.log(JSON.parse(res.data.data))
-          vm.data=JSON.parse(res.data.data)
+          // console.log(res.data.data.data);
+          console.log(JSON.parse(res.data.data.data))
+          vm.data=JSON.parse(res.data.data.data)
         }
       })
     }
   },
-  mounted() {
+  async mounted() {
     var vm=this;
-    vm.getData();
+    await vm.getData();
+    console.log('this');
     console.log(vm.data);
     var mymap = L.map('map').setView([23, 120], 5);;
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -82,8 +83,8 @@ export default {
         speedUnit: 'm/s'
       },
       data: vm.data,
-      maxVelocity: 100,
-      velocityScale: 0.5,
+      maxVelocity: 10,
+      velocityScale: 0.05,
     });
     velocity.addTo(mymap);
 

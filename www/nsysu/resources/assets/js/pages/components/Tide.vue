@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container joinus-page">
+  <div class="page-container joinus-page owl-carousel">
     <div class="mapbodyAll">
       
       <l-map

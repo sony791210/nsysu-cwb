@@ -1,3 +1,7 @@
+.owl-carousel {
+    -ms-touch-action: none;
+    touch-action: none;
+}
 .navbar {
     display: flex;
     flex-direction: column;
@@ -13,6 +17,7 @@
         margin: 0;
         padding: 0;
         .tab-group-item {
+            
             display: block;
             padding: 0 10px;
             margin-bottom: -1px;
@@ -29,7 +34,8 @@
                 display: block;
             }
             .img{
-                width: 150px;
+                // width: 150px;
+                height: 70px !important;
             }
             .link-content {
                 background-color: hsla(0,0%,100%,.9); 
