@@ -49,16 +49,16 @@ export default {
        zoomOffset: -1,
        accessToken: 'pk.eyJ1IjoiYXBwbGU3OTEyMTAiLCJhIjoiY2s2aGp1Zjl6MHZveTNrbXRld2ViZzdtcSJ9.P9qkKbnkCZPCqGDXHbr2aA'
     }).addTo(mymap);
-    const windSpeedUrl=siteUrl+'/tiff/point2.tiff'
-    // https://stuartmatthews.github.io/leaflet-geotiff/tif/wind_speed.tif';
-    const plottyRenderer = L.LeafletGeotiff.plotty({
-        displayMin: 0.01,
-        displayMax: 1,
-        clampLow: true,
-        clampHigh: true,
-        colorScale:"summer"
+    // const windSpeedUrl=siteUrl+'/tiff/point2.tiff'
+    // // https://stuartmatthews.github.io/leaflet-geotiff/tif/wind_speed.tif';
+    // const plottyRenderer = L.LeafletGeotiff.plotty({
+    //     displayMin: 0.01,
+    //     displayMax: 1,
+    //     clampLow: true,
+    //     clampHigh: true,
+    //     colorScale:"summer"
         
-      });
+    //   });
     var imageUrl = siteUrl+'/tiff/test.png',
 	  imageBounds = [[20, 115], [26, 123]];
 

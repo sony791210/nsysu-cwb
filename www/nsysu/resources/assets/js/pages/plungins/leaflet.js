@@ -21,12 +21,12 @@ import "leaflet-velocity-ts/dist/leaflet-velocity.js"
 
 ///////////////////////////
 //測試
-import "leaflet-geotiff-2/dist/leaflet-geotiff.js";
+// import "leaflet-geotiff-2/dist/leaflet-geotiff.js";
 
-// // optional renderers
-import "leaflet-geotiff-2/dist/leaflet-geotiff-rgb.js";
-import "leaflet-geotiff-2/dist/leaflet-geotiff-vector-arrows.js";
-import "leaflet-geotiff-2/dist/leaflet-geotiff-plotty.js"; // requires plotty
+// // // optional renderers
+// import "leaflet-geotiff-2/dist/leaflet-geotiff-rgb.js";
+// import "leaflet-geotiff-2/dist/leaflet-geotiff-vector-arrows.js";
+// import "leaflet-geotiff-2/dist/leaflet-geotiff-plotty.js"; // requires plotty
 
 
 
