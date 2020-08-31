@@ -59,6 +59,10 @@ export default {
         colorScale:"summer"
         
       });
+    var imageUrl = siteUrl+'/tiff/test.png',
+	  imageBounds = [[20, 115], [26, 123]];
+
+    L.imageOverlay(imageUrl, imageBounds).addTo(mymap);
     // const windSpeedLayer = L.leafletGeotiff(windSpeedUrl, {
     //     band: 0,
     //     renderer: plottyRenderer,

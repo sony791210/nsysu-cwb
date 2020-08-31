@@ -5,6 +5,10 @@ www/nsysu/public/css
 www/nsysu/public/js
 www/nsysu/public/mix-manifest.json
 www/nsysu/public/fonts
+www/nsysu/public/tiff/*.tiff
+www/nsysu/public/tiff/*.tif
+www/nsysu/public/tiff/*.xml
+
 www/nsysu/storage/*.key
 www/nsysu/storage/order
 www/nsysu/vendor
