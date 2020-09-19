@@ -16,6 +16,20 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 // 載入 css
 import "leaflet/dist/leaflet.css";
+import "leaflet-velocity-ts/dist/leaflet-velocity.js"
+
+
+///////////////////////////
+//測試
+// import "leaflet-geotiff-2/dist/leaflet-geotiff.js";
+
+// // // optional renderers
+// import "leaflet-geotiff-2/dist/leaflet-geotiff-rgb.js";
+// import "leaflet-geotiff-2/dist/leaflet-geotiff-vector-arrows.js";
+// import "leaflet-geotiff-2/dist/leaflet-geotiff-plotty.js"; // requires plotty
+
+
+
 
 // 啟用載入的各組件  vue2-leaflet
 Vue.component("l-map", LMap);

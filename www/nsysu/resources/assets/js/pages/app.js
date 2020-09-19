@@ -28,11 +28,7 @@ import "amcharts3/amcharts/plugins/export/export.min.js"
 
 
 
-// import * as L from "leaflet";
-import "leaflet/dist/leaflet.css"
-import "leaflet/dist/leaflet.js"
 
-import "leaflet-velocity-ts/dist/leaflet-velocity.js"
 
 
 

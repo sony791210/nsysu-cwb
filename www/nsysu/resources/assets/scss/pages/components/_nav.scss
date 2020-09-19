@@ -1,9 +1,13 @@
+.owl-carousel {
+    -ms-touch-action: none;
+    touch-action: none;
+}
 .navbar {
     display: flex;
     flex-direction: column;
     background-color: $white;
     color: $black;
-    height: $navbar-height;
+    height: 80px;
     padding: 0;
     .navbar-brand {
         margin-right: 0;
@@ -13,28 +17,33 @@
         margin: 0;
         padding: 0;
         .tab-group-item {
+            
             display: block;
             padding: 0 10px;
             margin-bottom: -1px;
-            line-height: $navbar-height;
+            line-height: 80px;
             cursor: pointer;
             transition: transform .2s;
             position: relative;
             &:hover {
                 color: $gold;
                 transform: scale(1.1);
+                border-bottom: 1px solid red;
             }
             &:hover > .link-content  {
                 display: block;
             }
             .img{
-                width: 150px;
+                // width: 150px;
+                height: 70px !important;
             }
             .link-content {
                 background-color: hsla(0,0%,100%,.9); 
                 // left: 50%; 
                 // transform: translateX(-50%); 
                 // position: absolute; 
+                line-height: 20px;
+                border-top: 1px solid gray;
                 top: 69px; 
                 white-space: nowrap; 
                 text-align: center; 

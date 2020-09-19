@@ -4,7 +4,7 @@
       <ul class="tab-group">
         
         <a href="/" class="tab-group-item">
-          <img class="img" src="https://ttpass.tw/dist/client/img/bc7f287.png" alt="132(123)" >
+          <img class="img" src="https://www.logaster.com/blog/wp-content/uploads/2018/05/LogoMakr.png" alt="132(123)" >
         </a>
         <router-link :to="'/' + item.name" v-for="item in tabs" :key="item.name" class="tab-group-item">
      

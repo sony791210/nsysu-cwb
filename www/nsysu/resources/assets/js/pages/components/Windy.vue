@@ -1,13 +1,14 @@
 <template>
   <div>
     
-    <div id="chartDiv" style="max-width: 500px;height: 560px;margin: 0px auto"> </div>
+    //  <div id="chartDiv" style="max-width: 500px;height: 560px;margin: 0px auto"> </div>
   </div>
 </template>
 
 <script>
 
-import { JSC } from 'jscharting-vue';
+// import { JSC } from 'jscharting-vue';
+
 export default {
     data() {
       return {
@@ -68,10 +69,10 @@ export default {
        }
     },
     mounted() {
-      var chart;
-      console.log(this.data);
-      this.getData();
-      console.log(this.data);
+      // var chart;
+      // console.log(this.data);
+      // this.getData();
+      // console.log(this.data);
       // this.renderChart(this.data);
     },
 
