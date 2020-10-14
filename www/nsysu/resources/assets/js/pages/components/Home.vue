@@ -21,14 +21,10 @@ export default {
       let vm=this
       await axios.get(siteUrl + '/api/cwbData/getSurfaceData').then(function(res) {
         if (res.data.code === '00000') {
-          // 
-          var abc = '[ {"hear":"test","data":[123]},{"hear":"test2","data":[34]}]'
-
-          console.log(JSON.parse(abc))
-          console.log('test')
-          // console.log(res.data.data.data);
-          console.log(JSON.parse(res.data.data.data))
-          vm.data=JSON.parse(res.data.data.data)
+          console.log('here');
+          console.log(res.data.data)
+          vm.data=res.data.data.data;
+          console.log(vm.data);
         }
       })
     },

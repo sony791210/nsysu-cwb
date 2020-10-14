@@ -137,6 +137,17 @@ return [
             'prefix' => '',
         ],
 
+        'mongodb' => [
+            'driver' => 'mongodb',
+            'host' => env('CWB_DB_CONNECTION', '127.0.0.1'),
+            'port' => '27017',
+            'database' => 'current',
+            'username' => 'admin',
+            'password' => 'ksd53890045',
+            'options' => [ 'database' => 'admin'] ,
+        ],
+            
+
     ],
 
     /*

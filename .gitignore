@@ -25,3 +25,13 @@ www/nsysu/public/mix-manifest.json
 laradock/logs/nginx/laravel_access.log
 laradock/logs/nginx/laravel_access.log.1
 www/nsysu/public/*.json
+www/down10/20200915.nc
+www/down10/changeToXml.py
+www/down10/OCM2.20200915.000.xml
+www/down10/test.ipynb
+www/down10/test.txt
+www/down10/test2.ipynb
+www/down10/train.txt
+www/down10/xxx.txt
+www/mongodb/getToMongo.ipynb
+www/mongodb/tese.ipynb
