@@ -1714,4 +1714,19 @@ services:
         - ${DATA_PATH_HOST}/tomcat/webapps:/usr/local/tomcat/webapps
         - ${DATA_PATH_HOST}/tomcat/logs:/usr/local/tomcat/logs
       # restart: always
-
+### django ####################################################
+    django:
+      container_name: django
+      build:
+        context: ./django
+        args:
+          - DJANGO_DIRNAME=${DJANGO_DIRNAME}
+      command: >
+            /bin/bash -c "
+            cd ${APP_CODE_PATH_HOST}/${DJANGO_DIRNAME};
+            uwsgi --ini /var/www/${DJANGO_DIRNAME}/uwsgi.ini;"
+      networks:
+        - frontend
+        - backend
+      volumes:
+        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
