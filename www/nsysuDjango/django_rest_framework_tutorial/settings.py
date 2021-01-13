@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'corsheaders', # django-cors-headers
     'rest_framework',
     'musics',
+    'cwb'
 ]
 
 MIDDLEWARE = [

@@ -15,7 +15,7 @@ class CWBDataController extends RestLaravelController
     {
         
         $data=CWBFactory::create($name)->getListInfo();
-         
+        
         $result=[];
         foreach($data as $item){
             

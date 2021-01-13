@@ -17,7 +17,6 @@ class HomeController extends BaseController
 
     public function index()
     {
-
         return view('pages.app');
     }
 
