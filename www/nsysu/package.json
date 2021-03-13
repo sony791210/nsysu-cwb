@@ -60,7 +60,7 @@
         "vue2-leaflet-markercluster": "^3.1.0",
         "vue2-twzipcode": "^2.0.3",
         "wind-js-leaflet": "^2.0.5",
-        "xmldom": "^0.3.0"
+        "xmldom": "^0.5.0"
     },
     "husky": {
         "hooks": {
